@@ -5,10 +5,9 @@ Personal portfolio of Madhav K: https://maaadhavq.github.io
 Plain HTML, CSS and a little vanilla JavaScript. No framework and no build step. Fonts (Archivo,
 Atkinson Hyperlegible Next, Martian Mono) come from Google Fonts.
 
-The hero animation replays the Mandate Retry Sequencer's committed run: each of the 500 dots is a
-real record from that repo's ledger (`data/ledger.jsonl`), encoded inline in `assets/js/pipeline.js`.
-The colours mean the same thing everywhere: blue = what was built / the agent, rose = a rule or
-constraint, brass = the result.
+Project visuals are real screenshots of each project running (`assets/img/*.webp`, 640 and 1280
+wide). The Mandate Retry case study also has a canvas replay of that project's committed run: each
+of the 500 dots is a real record from its ledger, encoded inline in `assets/js/pipeline.js`.
 
 ## Layout
 
@@ -18,8 +17,9 @@ projects/*.html             one case study per project
 404.html
 assets/css/style.css        all styles (light/dark tokens at the top)
 assets/js/theme.js          theme toggle
-assets/js/site.js           header state, timeline highlighting, copy-email button
-assets/js/pipeline.js       hero replay (canvas) with the 500-record data inline
+assets/js/site.js           copy-email button
+assets/js/pipeline.js       Mandate Retry replay (canvas), 500-record data inline
+assets/img/                 project screenshots (WebP)
 assets/resume_general.pdf   the resume linked from the site
 assets/og.png               social preview image (1200×630)
 resume.pdf                  copy of the current resume, so older /resume.pdf links keep working
