@@ -2,8 +2,13 @@
 
 Personal portfolio of Madhav K: https://maaadhavq.github.io
 
-Plain HTML and CSS with one small script for the light/dark toggle. There is no framework, no build
-step and no web fonts, so the site is fast by default.
+Plain HTML, CSS and a little vanilla JavaScript. No framework and no build step. Fonts (Archivo,
+Atkinson Hyperlegible Next, Martian Mono) come from Google Fonts.
+
+The hero animation replays the Mandate Retry Sequencer's committed run: each of the 500 dots is a
+real record from that repo's ledger (`data/ledger.jsonl`), encoded inline in `assets/js/pipeline.js`.
+The colours mean the same thing everywhere: blue = what was built / the agent, rose = a rule or
+constraint, brass = the result.
 
 ## Layout
 
@@ -13,6 +18,8 @@ projects/*.html             one case study per project
 404.html
 assets/css/style.css        all styles (light/dark tokens at the top)
 assets/js/theme.js          theme toggle
+assets/js/site.js           header state, timeline highlighting, copy-email button
+assets/js/pipeline.js       hero replay (canvas) with the 500-record data inline
 assets/resume_general.pdf   the resume linked from the site
 assets/og.png               social preview image (1200×630)
 resume.pdf                  copy of the current resume, so older /resume.pdf links keep working
