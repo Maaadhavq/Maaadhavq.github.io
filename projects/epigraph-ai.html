@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e7a4a978">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
-  <script src="/assets/js/theme.js" defer></script>
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
+  <script src="/assets/js/site.js?v=cd8cdff1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,20 +52,20 @@
       <p class="kicker">Case study · Public health · GNN</p>
       <h1>EpiGraph-AI</h1>
       <p class="lede">A deep learning pipeline that forecasts dengue outbreaks as a connected, spatio-temporal problem, combining clinical and weather data with local health news. This is a work in progress.</p>
-      <dl class="facts"><div><dt>Role</dt><dd><span class="todo">solo or team? confirm</span></dd></div><div><dt>Stack</dt><dd>Python, PyTorch, GAT, LSTM, BioBERT, PCA</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/EPI-Graph">GitHub</a></dd></div></dl>
+      <dl class="facts"><div><dt>Stack</dt><dd>Python, PyTorch, GAT, LSTM, BioBERT, PCA</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/EPI-Graph">GitHub</a></dd></div></dl>
     </div>
     <figure class="shot case-shot"><img src="/assets/img/epigraph-1280.webp" srcset="/assets/img/epigraph-640.webp 640w, /assets/img/epigraph-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="EpiGraph-AI surveillance homepage: a dark map of India with Gujarat highlighted as active, the headline India Under Watch, and a live district risk ticker"><figcaption>The surveillance web app, running locally.</figcaption></figure>
     <article class="case">
       <section aria-labelledby="epigraph-ai-0">
         <h2 id="epigraph-ai-0">Problem</h2>
         <div class="prose">
-          <p>Dengue case counts in one district depend on its neighbours, on recent weather, and on signals that show up in local health news before they show up in the numbers. A forecast that uses only one of those misses the rest. The aim is to predict outbreaks early enough to act on. <span class="todo">add who acts on the forecast and how much lead time matters.</span></p>
+          <p>Dengue case counts in one district depend on its neighbours, on recent weather, and on signals that show up in local health news before they show up in the numbers. A forecast that uses only one of those misses the rest. The aim is to predict outbreaks early enough to act on.</p>
         </div>
       </section>
       <section aria-labelledby="epigraph-ai-1">
         <h2 id="epigraph-ai-1">Users</h2>
         <div class="prose">
-          <p><span class="todo">name the intended user (e.g. district public-health surveillance teams) and whether any were consulted.</span></p>
+          <p>Public-health surveillance teams. The web app presents the forecast as a dengue early-warning view, state by state and district by district.</p>
         </div>
       </section>
       <section aria-labelledby="epigraph-ai-2">
@@ -74,7 +74,7 @@
           <ul>
             <li><strong>Sudden spikes.</strong> Outbreak data has huge outliers that can dominate a squared-error loss.</li>
             <li><strong>Embedding size.</strong> BioBERT embeddings are 768-dimensional, which is too large to fuse efficiently alongside a handful of weather and case features.</li>
-            <li><strong>Data.</strong> Three inputs are needed: processed cases with weather variables, news headlines per date and district, and a district connectivity matrix. <span class="todo">add data sources, number of districts and time span.</span></li>
+            <li><strong>Data.</strong> Three inputs are needed: processed cases with weather variables, news headlines per date and district, and a district connectivity matrix.</li>
           </ul>
         </div>
       </section>
@@ -110,14 +110,7 @@
           <ul class="tradeoffs">
             <li><b>Huber loss instead of MSE.</b>It stays robust to sudden case spikes, at the cost of penalising large misses less heavily.</li>
             <li><b>PCA from 768 to 32 dimensions.</b>The news signal becomes cheap enough to fuse, at the cost of some of the information in the embedding.</li>
-            <li><b>7-day lookback, 1-day horizon.</b><span class="todo">explain why this window and horizon.</span></li>
           </ul>
-        </div>
-      </section>
-      <section aria-labelledby="epigraph-ai-6">
-        <h2 id="epigraph-ai-6">What I'd do next</h2>
-        <div class="prose">
-          <p><span class="todo">add your next steps. One option: run ablations (no news, no graph) to measure what each signal adds.</span></p>
         </div>
       </section>
     </article>

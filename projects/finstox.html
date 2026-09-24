@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e7a4a978">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
-  <script src="/assets/js/theme.js" defer></script>
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
+  <script src="/assets/js/site.js?v=cd8cdff1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,7 +52,7 @@
       <p class="kicker">Case study · Fintech · XAI</p>
       <h1>Finstox</h1>
       <p class="lede">The backend for Finstox, a stock-trading demo website built for a Web Programming course. It is not a real trading platform. It serves LSTM price predictions for NSE stocks with a LIME and SHAP explanation for every prediction.</p>
-      <dl class="facts"><div><dt>Role</dt><dd>Backend <span class="todo">confirm team size and who built the frontend</span></dd></div><div><dt>Stack</dt><dd>Python, FastAPI, TensorFlow/Keras, LIME, SHAP, JWT auth</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/finstox-backend">GitHub</a></dd></div></dl>
+      <dl class="facts"><div><dt>Role</dt><dd>Backend</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, TensorFlow/Keras, LIME, SHAP, JWT auth</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/finstox-backend">GitHub</a></dd></div></dl>
     </div>
     <figure class="shot case-shot"><div class="api" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div><figcaption>The backend's real routes. <code>/predict/{symbol}</code> serves the LSTM forecast.</figcaption></figure>
     <article class="case">
@@ -65,7 +65,7 @@
       <section aria-labelledby="finstox-1">
         <h2 id="finstox-1">Users</h2>
         <div class="prose">
-          <p>Non-technical users of the Finstox demo site who want to understand a prediction before acting on it. <span class="todo">confirm the intended user and whether anyone outside the course used it.</span></p>
+          <p>Non-technical users of the Finstox demo site who want to understand a prediction before acting on it.</p>
         </div>
       </section>
       <section aria-labelledby="finstox-2">
@@ -74,7 +74,6 @@
           <ul>
             <li>A course project, built as a demo and not a regulated trading service.</li>
             <li>Only free public market data, fetched through <code>yfinance</code> and <code>nsepython</code>.</li>
-            <li><span class="todo">add other constraints (deadline, compute, team).</span></li>
           </ul>
         </div>
       </section>
@@ -88,25 +87,12 @@
           </ul>
         </div>
       </section>
-      <section aria-labelledby="finstox-4">
-        <h2 id="finstox-4">Metrics</h2>
-        <div class="prose">
-          <p><span class="todo">add a measured result, such as prediction error on held-out days or what users did with the explanations.</span></p>
-        </div>
-      </section>
       <section aria-labelledby="finstox-5">
         <h2 id="finstox-5">Trade-offs I made</h2>
         <div class="prose">
           <ul class="tradeoffs">
             <li><b>Explanations for each prediction, not global feature importance.</b>The user's question is about the stock in front of them, not the model in general.</li>
-            <li><b>Both LIME and SHAP.</b><span class="todo">explain why both, e.g. whether they agreed and which one users found clearer.</span></li>
           </ul>
-        </div>
-      </section>
-      <section aria-labelledby="finstox-6">
-        <h2 id="finstox-6">What I'd do next</h2>
-        <div class="prose">
-          <p><span class="todo">add your next steps.</span></p>
         </div>
       </section>
     </article>

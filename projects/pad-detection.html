@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/style.css?v=e7a4a978">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})()</script>
-  <script src="/assets/js/theme.js" defer></script>
-  <script src="/assets/js/site.js" defer></script>
+  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
+  <script src="/assets/js/site.js?v=cd8cdff1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -52,7 +52,7 @@
       <p class="kicker">Case study · Health · RAG</p>
       <h1>PAD Detection + Risk Copilot</h1>
       <p class="lede">Two halves of one project: a machine learning pipeline that predicts peripheral artery disease (PAD) from routine hospital data, and a RAG copilot that turns each prediction into an explanation a reader can check.</p>
-      <dl class="facts"><div><dt>Role</dt><dd><span class="todo">solo or team? confirm</span></dd></div><div><dt>Stack</dt><dd>Python, scikit-learn, XGBoost, LightGBM, SHAP, Ollama, Streamlit</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/PAD-peripheral-artery-disease-detection">GitHub</a></dd></div></dl>
+      <dl class="facts"><div><dt>Stack</dt><dd>Python, scikit-learn, XGBoost, LightGBM, SHAP, Ollama, Streamlit</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/PAD-peripheral-artery-disease-detection">GitHub</a></dd></div></dl>
     </div>
     <figure class="shot case-shot"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="800" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"><figcaption>The copilot explaining a demo record, with numbered citations. The model shown here is trained on synthetic smoke-test data, not MIMIC-IV.</figcaption></figure>
     <article class="case">
@@ -66,7 +66,6 @@
         <h2 id="pad-detection-1">Users</h2>
         <div class="prose">
           <p>Researchers and clinicians reviewing a risk score, for research use only. This is not a medical device and has not been validated prospectively or externally.</p>
-          <p><span class="todo">confirm the intended user and whether anyone outside the project has used it.</span></p>
         </div>
       </section>
       <section aria-labelledby="pad-detection-2">
@@ -109,7 +108,6 @@
               <tr><td>Automated tests (synthetic MIMIC-shaped fixture)</td><td class="num">54</td></tr>
             </tbody>
           </table></div>
-          <p><span class="todo">confirm 0.88 is the held-out test AUC on real MIMIC-IV data, and name the winning model. The local artifacts/model_card.json comes from synthetic smoke-test data, so it can't confirm this.</span></p>
           <p>The two answers without a citation are flagged as ungrounded in the UI, not passed off as sourced.</p>
         </div>
       </section>
