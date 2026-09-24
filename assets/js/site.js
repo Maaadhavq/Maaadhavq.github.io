@@ -103,4 +103,78 @@
     }, { rootMargin: '0px 0px -8% 0px' });
     items.forEach(function (el) { io.observe(el); });
   }
+
+  // ---- v5 motion ----
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  // Headline: cycle the last word (things I've actually shipped)
+  var swap = document.querySelector('[data-swap]');
+  if (swap && !reduce) {
+    var words = Array.prototype.slice.call(swap.children), wi = 0, paused = false;
+    swap.closest('h1').addEventListener('mouseenter', function () { paused = true; });
+    swap.closest('h1').addEventListener('mouseleave', function () { paused = false; });
+    setTimeout(function () {
+      setInterval(function () {
+        if (paused || document.hidden) return;
+        var cur = words[wi]; wi = (wi + 1) % words.length; var next = words[wi];
+        cur.classList.remove('on'); cur.classList.add('out');
+        next.classList.remove('out'); next.classList.add('on');
+        setTimeout(function () { cur.classList.remove('out'); }, 650);
+      }, 2400);
+    }, 1600);
+  }
+
+  // Scroll progress fallback where scroll-driven animations aren't supported
+  var bar = document.querySelector('.progress');
+  if (bar && !(window.CSS && CSS.supports('animation-timeline: scroll()'))) {
+    var setBar = function () {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + (h > 0 ? window.scrollY / h : 0) + ')';
+    };
+    setBar(); window.addEventListener('scroll', setBar, { passive: true });
+  }
+
+  // Cursor label over project tiles
+  var tag = document.querySelector('.cursor-tag');
+  if (tag && fine && !reduce) {
+    var tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+    var loop = function () {
+      cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
+      tag.style.transform = 'translate(' + (cx + 14) + 'px,' + (cy + 14) + 'px)';
+      if (Math.abs(tx - cx) + Math.abs(ty - cy) > 0.3) requestAnimationFrame(loop); else running = false;
+    };
+    document.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      if (!running) { running = true; requestAnimationFrame(loop); }
+    }, { passive: true });
+    document.querySelectorAll('[data-peek]').forEach(function (a) {
+      a.addEventListener('mouseenter', function (e) { cx = tx = e.clientX; cy = ty = e.clientY; tag.classList.add('on'); });
+      a.addEventListener('mouseleave', function () { tag.classList.remove('on'); });
+      a.addEventListener('click', function () { tag.classList.remove('on'); });
+    });
+  }
+
+  // Magnetic buttons: drift a few pixels toward the pointer
+  if (fine && !reduce) {
+    document.querySelectorAll('.magnetic').forEach(function (el) {
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width / 2)) / r.width, dy = (e.clientY - (r.top + r.height / 2)) / r.height;
+        el.style.transform = 'translate(' + dx * 8 + 'px,' + dy * 6 + 'px)';
+      });
+      el.addEventListener('pointerleave', function () { el.style.transform = ''; });
+    });
+  }
+
+  // Beliefs: words light up when the line reaches the middle of the screen
+  var beliefs = document.querySelectorAll('.beliefs li');
+  if (beliefs.length) {
+    if (reduce || !('IntersectionObserver' in window)) beliefs.forEach(function (li) { li.classList.add('lit'); });
+    else {
+      var lit = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('lit'); lit.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -35% 0px' });
+      beliefs.forEach(function (li) { lit.observe(li); });
+    }
+  }
 })();
