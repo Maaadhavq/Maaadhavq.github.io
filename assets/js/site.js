@@ -120,7 +120,7 @@
         cur.classList.remove('on'); cur.classList.add('out');
         next.classList.remove('out'); next.classList.add('on');
         setTimeout(function () { cur.classList.remove('out'); }, 650);
-      }, 2400);
+      }, 5000);
     }, 1600);
   }
 
