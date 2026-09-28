@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=a11c6090">
+  <link rel="stylesheet" href="/assets/css/style.css?v=32f8391d">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Madhav K","jobTitle":"AI Developer","url":"https://maaadhavq.github.io/","email":"mailto:madhavkomanduri@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressCountry":"IN"},"alumniOf":"Vellore Institute of Technology, Chennai","sameAs":["https://www.linkedin.com/in/madhav-k-aab202288","https://github.com/Maaadhavq"]}
@@ -122,11 +122,15 @@
           </a>
         </article>
         <article class="tile t-6 tile-pub reveal">
-          <div class="pub-card">
-            <span class="pub-badge">IEEE ICISC 2026 · Published</span>
-            <p class="pub-title">A Comprehensive Analysis of Lightweight CNN for Fall Detection in Hallway Monitoring</p>
-            <p class="pub-meta">10th IEEE International Conference on Inventive Systems and Control, Coimbatore, August 2026.</p>
-          </div>
+          <a class="tile-link" href="https://ieeexplore.ieee.org/document/11681696/" data-peek="peek-paper">
+            <span class="pub-card">
+              <span class="pub-top"><span class="pub-badge">IEEE ICISC 2026 · Published</span><span class="pub-when">pp. 890–896</span></span>
+              <span class="pub-title">A Comprehensive Analysis of Lightweight CNN for Fall Detection in Hallway Monitoring</span>
+              <span class="pub-line">A CPU-only CNN that watches ordinary hallway CCTV and emails staff when someone falls, in under 50&nbsp;ms a frame.</span>
+              <span class="cm cm-sm" role="img" aria-label="Confusion matrix on 115 test samples: 46 falls caught, 24 missed, 10 false alarms, 35 correct no-fall"><span class="cm-h" aria-hidden="true"><span></span><span>predicted fall</span><span>predicted no fall</span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual fall</span><span class="cm-cell cm-ok" style="--v:1.00"><b>46</b><small>falls caught</small></span><span class="cm-cell cm-err" style="--v:0.52"><b>24</b><small>falls missed</small></span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual no fall</span><span class="cm-cell cm-err" style="--v:0.22"><b>10</b><small>false alarms</small></span><span class="cm-cell cm-ok" style="--v:0.76"><b>35</b><small>correct no-fall</small></span></span></span>
+              <span class="pub-foot"><span>With Sherly Alphonse, Bhenedix Paul &amp; Joshnavi Pokala</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
+            </span>
+          </a>
         </article>
       </div>
     </div>
@@ -257,6 +261,24 @@
       </dl>
       <p class="stack">Python · FastAPI · TensorFlow/Keras · LIME · SHAP</p>
       <p class="links"><a class="btn-case" href="/projects/finstox.html">Read the full case study →</a><a href="https://github.com/Maaadhavq/finstox-backend">GitHub ↗</a></p>
+    </div>
+  </div>
+</dialog>
+<dialog class="peek" id="peek-paper" aria-labelledby="peek-paper-t">
+  <div class="peek-inner">
+    <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
+    <div class="peek-body">
+      <p class="pub-badge pub-badge-light">IEEE ICISC 2026 · Published 5 Aug 2026</p>
+      <h3 id="peek-paper-t">A Comprehensive Analysis of Lightweight CNN for Fall Detection in Hallway Monitoring</h3>
+      <p class="tagline">Sherly Alphonse, Bhenedix Paul, Madhav K and Joshnavi Pokala. 10th International Conference on Inventive Systems and Control (ICISC), Coimbatore, pp. 890–896. DOI <a href="https://doi.org/10.1109/ICISC69558.2026.11681696">10.1109/ICISC69558.2026.11681696</a></p>
+      <dl class="pbr">
+        <div class="f-problem"><dt>Problem</dt><dd>Fall detection research mostly targets elderly care, where a system must tell a fall from lying down or sleeping. A school, hotel or office hallway needs one answer, fast: did someone fall?</dd></div>
+        <div class="f-built"><dt>What we built</dt><dd>A lightweight binary CNN (one sigmoid output, augmentation, dropout and batch norm) that runs on existing CCTV without a GPU, plus an email alert to reception or security when it detects a fall.</dd></div>
+        <div class="f-result"><dt>Result</dt><dd>Under 50&nbsp;ms per frame on CPU. On 115 test samples: 70% accuracy and AUC 0.71; on the fall class, 0.82 precision and 0.66 recall.</dd></div>
+        <div class="f-decision"><dt>Trade-off</dt><dd>Far less compute than R-CNN-style detectors, at the cost of accuracy: GPU-based methods in the literature report around 90%. One decision threshold can be tuned toward fall recall, which matters most for safety.</dd></div>
+      </dl>
+      <span class="cm cm-lg" role="img" aria-label="Confusion matrix on 115 test samples: 46 falls caught, 24 missed, 10 false alarms, 35 correct no-fall"><span class="cm-h" aria-hidden="true"><span></span><span>predicted fall</span><span>predicted no fall</span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual fall</span><span class="cm-cell cm-ok" style="--v:1.00"><b>46</b><small>falls caught</small></span><span class="cm-cell cm-err" style="--v:0.52"><b>24</b><small>falls missed</small></span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual no fall</span><span class="cm-cell cm-err" style="--v:0.22"><b>10</b><small>false alarms</small></span><span class="cm-cell cm-ok" style="--v:0.76"><b>35</b><small>correct no-fall</small></span></span></span>
+      <p class="links"><a class="btn-case" href="https://ieeexplore.ieee.org/document/11681696/">Read on IEEE Xplore ↗</a></p>
     </div>
   </div>
 </dialog>
