@@ -110,18 +110,15 @@
   // Headline: cycle the last word (things I've actually shipped)
   var swap = document.querySelector('[data-swap]');
   if (swap && !reduce) {
-    var words = Array.prototype.slice.call(swap.children), wi = 0, paused = false;
-    swap.closest('h1').addEventListener('mouseenter', function () { paused = true; });
-    swap.closest('h1').addEventListener('mouseleave', function () { paused = false; });
-    setTimeout(function () {
-      setInterval(function () {
-        if (paused || document.hidden) return;
-        var cur = words[wi]; wi = (wi + 1) % words.length; var next = words[wi];
-        cur.classList.remove('on'); cur.classList.add('out');
-        next.classList.remove('out'); next.classList.add('on');
-        setTimeout(function () { cur.classList.remove('out'); }, 650);
-      }, 5000);
-    }, 1600);
+    // Changes every 5 seconds. No pause on hover: resting the cursor on the headline froze it.
+    var words = Array.prototype.slice.call(swap.children), wi = 0;
+    setInterval(function () {
+      if (document.hidden) return;
+      var cur = words[wi]; wi = (wi + 1) % words.length; var next = words[wi];
+      cur.classList.remove('on'); cur.classList.add('out');
+      next.classList.remove('out'); next.classList.add('on');
+      setTimeout(function () { cur.classList.remove('out'); }, 650);
+    }, 5000);
   }
 
   // Scroll progress fallback where scroll-driven animations aren't supported
