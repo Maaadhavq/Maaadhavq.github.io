@@ -6,7 +6,7 @@ Plain HTML, CSS and vanilla JavaScript. No framework and no build step.
 
 ## What's on it
 
-- **Intro.** Who I am, the roles I'm looking for, and links to my resume, LinkedIn, GitHub and email.
+- **Intro.** Who I am, what I'm working on, and links to my resume, LinkedIn, GitHub and email.
   The headline's last word cycles through things I've shipped: products, copilots, dashboards, pipelines.
 - **Selected work.** A grid of real screenshots of each project running. Hover a tile to scroll through
   the screenshot. Click one for a quick look (problem, what I built, result, product decision), with a
