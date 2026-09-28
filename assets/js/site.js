@@ -92,6 +92,174 @@
     dlg.addEventListener('close', function () { root.classList.remove('peek-open'); });
   });
 
+  // ---- Quick-look navigation: prev/next buttons, ←/→ keys, swipe ----
+  var peeks = Array.prototype.slice.call(document.querySelectorAll('dialog.peek'));
+  function openPeek(d, animate) {
+    if (!animate) d.classList.add('no-anim');
+    d.showModal();
+    root.classList.add('peek-open');
+    d.scrollTop = 0;
+    if (!animate) requestAnimationFrame(function () { requestAnimationFrame(function () { d.classList.remove('no-anim'); }); });
+  }
+  function step(d, dir) {
+    var next = peeks[(peeks.indexOf(d) + dir + peeks.length) % peeks.length];
+    d.close();
+    openPeek(next, false);
+  }
+  peeks.forEach(function (d, i) {
+    var inner = d.querySelector('.peek-inner');
+    if (!inner || typeof d.showModal !== 'function') return;
+    var nav = document.createElement('div');
+    nav.className = 'peek-nav';
+    nav.innerHTML = '<button type="button" class="peek-step" data-step="-1" aria-label="Previous project">←</button>' +
+      '<span class="peek-count">' + (i + 1) + ' / ' + peeks.length + '</span>' +
+      '<button type="button" class="peek-step" data-step="1" aria-label="Next project">→</button>';
+    inner.insertBefore(nav, inner.children[1] || null);
+    nav.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-step]');
+      if (b) step(d, +b.getAttribute('data-step'));
+    });
+    d.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); step(d, 1); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); step(d, -1); }
+    });
+    var sx = null, sy = null;
+    d.addEventListener('touchstart', function (e) { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
+    d.addEventListener('touchend', function (e) {
+      if (sx === null) return;
+      var dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+      sx = null;
+      if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) step(d, dx < 0 ? 1 : -1);
+    }, { passive: true });
+  });
+
+  // ---- Live demo: Mandate Retry NPCI clock ----
+  document.querySelectorAll('.demo-clock').forEach(function (box) {
+    var svg = box.querySelector('.clk'), read = box.querySelector('.clk-read');
+    var c1 = box.querySelector('.clk-c1'), c2 = box.querySelector('.clk-c2');
+    var wedges = Array.prototype.slice.call(box.querySelectorAll('.wedge'));
+    wedges.sort(function (a, b) { return a.getAttribute('data-hour') - b.getAttribute('data-hour'); });
+    var cur = -1;
+    function show(i) {
+      wedges.forEach(function (w) { w.classList.remove('on'); });
+      cur = i;
+      if (i < 0) {
+        read.textContent = read.getAttribute('data-default');
+        c1.textContent = '0 / 266'; c2.textContent = 'in blocked hours';
+        return;
+      }
+      var w = wedges[i];
+      w.classList.add('on');
+      read.textContent = w.getAttribute('data-span') + ' · ' + w.getAttribute('data-state') + ' · ' + w.getAttribute('data-ran');
+      c1.textContent = w.getAttribute('data-span').slice(0, 5);
+      c2.textContent = w.getAttribute('data-ran');
+    }
+    wedges.forEach(function (w, i) {
+      w.addEventListener('mouseenter', function () { show(i); });
+      w.addEventListener('click', function () { show(i); });
+    });
+    svg.addEventListener('mouseleave', function () { show(-1); });
+    svg.addEventListener('blur', function () { show(-1); });
+    svg.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      e.preventDefault();
+      var d = e.key === 'ArrowDown' ? 1 : -1;
+      show(((cur < 0 ? (d > 0 ? -1 : 0) : cur) + d + 24) % 24);
+    });
+  });
+
+  // ---- Live demo: PAD citations (hover/focus in CSS; tap toggles; cards kept inside the dialog) ----
+  function place(wrap) {
+    var card = wrap.querySelector('.src-card'), box = wrap.closest('.peek-inner') || document.body;
+    if (!card) return;
+    card.style.setProperty('--dx', '0px');
+    var r = card.getBoundingClientRect(), b = box.getBoundingClientRect(), dx = 0;
+    if (r.right > b.right - 8) dx = b.right - 8 - r.right;
+    if (r.left + dx < b.left + 8) dx = b.left + 8 - r.left;
+    card.style.setProperty('--dx', dx + 'px');
+  }
+  document.querySelectorAll('.cite-wrap').forEach(function (w) {
+    w.addEventListener('mouseenter', function () { place(w); });
+    w.addEventListener('focusin', function () { place(w); });
+  });
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest ? e.target.closest('.cite') : null;
+    document.querySelectorAll('.cite-wrap.open').forEach(function (w) { if (!b || w !== b.parentNode) w.classList.remove('open'); });
+    if (b) { place(b.parentNode); b.parentNode.classList.toggle('open'); }
+  });
+
+  // ---- Skills point to work ----
+  var skillRead = document.querySelector('.skill-read'), bento = document.querySelector('.bento');
+  var fbar = document.querySelector('.filter-bar'), activeSkill = null;
+  function sayUsed(b) {
+    if (skillRead) skillRead.textContent = b ? b.getAttribute('data-label') + ' → ' + b.getAttribute('data-used') : skillRead.getAttribute('data-default');
+  }
+  function clearFilter() {
+    if (activeSkill) activeSkill.classList.remove('on');
+    activeSkill = null;
+    if (!bento) return;
+    bento.classList.remove('filtering');
+    bento.querySelectorAll('.tile').forEach(function (t) { t.classList.remove('match'); });
+    if (fbar) fbar.hidden = true;
+    sayUsed(null);
+  }
+  function filterBy(b) {
+    if (activeSkill === b) { clearFilter(); return; }
+    clearFilter();
+    activeSkill = b;
+    b.classList.add('on');
+    var keys = b.getAttribute('data-uses').split(' '), n = 0;
+    bento.querySelectorAll('.tile').forEach(function (t) {
+      var m = keys.indexOf(t.getAttribute('data-key')) > -1;
+      t.classList.toggle('match', m);
+      if (m) n++;
+    });
+    bento.classList.add('filtering');
+    fbar.querySelector('[data-filter-text]').textContent = 'Showing work that uses ' + b.getAttribute('data-label') + ' · ' + n + ' project' + (n === 1 ? '' : 's');
+    fbar.hidden = false;
+    sayUsed(b);
+    document.getElementById('work').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+  }
+  if (bento && fbar) {
+    document.querySelectorAll('.skill').forEach(function (b) {
+      b.addEventListener('mouseenter', function () { sayUsed(b); });
+      b.addEventListener('focus', function () { sayUsed(b); });
+      b.addEventListener('mouseleave', function () { sayUsed(activeSkill); });
+      b.addEventListener('blur', function () { sayUsed(activeSkill); });
+      b.addEventListener('click', function () { filterBy(b); });
+    });
+    fbar.querySelector('[data-filter-clear]').addEventListener('click', clearFilter);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && activeSkill && !document.querySelector('dialog[open]')) clearFilter();
+    });
+  }
+
+  // ---- Page transitions: the screenshot you're looking at is the one that morphs ----
+  document.querySelectorAll('dialog.peek .btn-case').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (a.origin !== location.origin) return;
+      var d = a.closest('dialog'), key = d.getAttribute('data-key');
+      var tf = document.querySelector('.tile[data-key="' + key + '"] .frame'), pf = d.querySelector('.peek-shot .frame');
+      if (!tf || !pf) return;
+      tf.style.viewTransitionName = 'none';
+      pf.style.viewTransitionName = 'shot-' + key;
+    });
+  });
+  window.addEventListener('pageshow', function (e) {
+    if (!e.persisted) return;
+    document.querySelectorAll('.tile .frame').forEach(function (f) {
+      var t = f.closest('.tile');
+      if (t && t.getAttribute('data-key') !== 'paper') f.style.viewTransitionName = 'shot-' + t.getAttribute('data-key');
+    });
+    document.querySelectorAll('.peek-shot .frame').forEach(function (f) { f.style.viewTransitionName = ''; });
+  });
+
+  // ---- Hello, whoever opened the console ----
+  try {
+    console.log("%cHi, I'm Madhav.%c\nThis site is plain HTML, CSS and JS, written by hand. Source: https://github.com/Maaadhavq/Maaadhavq.github.io\nSay hello: madhavkomanduri@gmail.com",
+      'font: 700 16px system-ui, sans-serif; color: #1f6b45', 'font: 13px system-ui, sans-serif');
+  } catch (e) {}
+
   // Reveal on scroll
   var items = document.querySelectorAll('.reveal');
   if (reduce || !('IntersectionObserver' in window)) {

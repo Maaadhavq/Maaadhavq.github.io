@@ -22,11 +22,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=98d53e54">
+  <link rel="stylesheet" href="/assets/css/style.css?v=78ec161b">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
   <script src="/assets/js/pipeline.js?v=854727fc" defer></script>
-  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
-  <script src="/assets/js/site.js?v=60b8e9ec" defer></script>
+  <script src="/assets/js/theme.js?v=f7ffb57b" defer></script>
+  <script src="/assets/js/site.js?v=2d78dd7b" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -39,7 +39,7 @@
     <nav class="pill" aria-label="Sections">
       <span class="pill-ind" aria-hidden="true"></span>
       <a href="/#work">Work</a>
-      <a href="/#beliefs">Thinking</a>
+      <a href="/#beliefs">Habits</a>
       <a href="/#experience">Experience</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -57,18 +57,17 @@
   <div class="wrap">
     <div class="case-head">
       <a class="back" href="/#work">← All work</a>
-      <p class="kicker">Case study · Fintech · AI agent</p>
       <h1>Mandate Retry Sequencer</h1>
-      <p class="lede">A recovery pipeline for failed UPI Autopay mandate debits. An ML model scores each case, an LLM agent handles the ambiguous middle, and five compliance rules run before and after every agent proposal. The agent proposes; the rules dispose.</p>
-      <dl class="facts"><div><dt>Role</dt><dd>Solo: design, build, deploy</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, LightGBM, SHAP, Claude API, React, d3</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/mandate-retry-sequencer">GitHub</a> · <a href="https://mandate-retry-frontend.onrender.com">Live demo</a></dd></div></dl>
+      <p class="lede">A recovery pipeline for failed UPI Autopay mandate debits. An ML model scores each case, an LLM agent handles the ambiguous middle, and five compliance rules run before and after every agent proposal.</p>
+      <dl class="facts"><div><dt>Area</dt><dd>Fintech · AI agent</dd></div><div><dt>Role</dt><dd>Solo: design, build, deploy</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, LightGBM, SHAP, Claude API, React, d3</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/mandate-retry-sequencer">GitHub</a> · <a href="https://mandate-retry-frontend.onrender.com">Live demo</a></dd></div></dl>
     </div>
-    <figure class="shot case-shot"><img src="/assets/img/mandate-1280.webp" srcset="/assets/img/mandate-640.webp 640w, /assets/img/mandate-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="2311" loading="lazy" decoding="async" alt="Mandate Retry Sequencer dashboard: a rail showing 500 debits in, 187 stopped by a rule, 248 routed to the agent, 266 executed and ₹44L recovered, above a Sankey of where the 500 went"><figcaption>The live dashboard on the committed synthetic batch.</figcaption></figure>
+    <figure class="shot case-shot"><img style="view-transition-name: shot-mandate" src="/assets/img/mandate-1280.webp" srcset="/assets/img/mandate-640.webp 640w, /assets/img/mandate-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="2311" loading="lazy" decoding="async" alt="Mandate Retry Sequencer dashboard: a rail showing 500 debits in, 187 stopped by a rule, 248 routed to the agent, 266 executed and ₹44L recovered, above a Sankey of where the 500 went"><figcaption>The live dashboard on the committed synthetic batch.</figcaption></figure>
     <article class="case">
       <section aria-labelledby="mandate-retry-sequencer-0">
         <h2 id="mandate-retry-sequencer-0">Problem</h2>
         <div class="prose">
-          <p>According to the reports collected in the repo's SOURCES.md, more than 20 million UPI Autopay mandates are revoked every month in India because the customer's balance was short. Retrying them is not the hard part, since every gateway does that.</p>
-          <p>The hard part is proving <strong>which retries were permitted, which were refused, what being wrong cost, and what the system chose not to do</strong>. A recovery tool that only shows a recovery figure can't answer any of those questions.</p>
+          <p>According to the reports collected in the repo's SOURCES.md, more than 20 million UPI Autopay mandates are revoked every month in India because the customer's balance was short. Payment gateways already retry them.</p>
+          <p>What merchants can't easily show is <strong>which retries were allowed, which were refused, what a wrong retry cost, and which debits the system left alone</strong>. A recovery figure on its own doesn't answer those questions.</p>
         </div>
       </section>
       <section aria-labelledby="mandate-retry-sequencer-1">
@@ -87,7 +86,7 @@
             <li><strong>NPCI peak-hour windows.</strong> Effective 1 August 2025, non-customer-initiated debits (which is what a mandate debit is) are restricted to non-peak hours. Blocked: 10:00–13:00 and 17:00–21:30 IST, about 40% of the day.</li>
             <li><strong>Five hard rules:</strong> revoked mandate, attempt cap, cooling period, recovery horizon and the NPCI peak window. No score and no agent decision may override one.</li>
             <li><strong>Not every constant is equally trustworthy.</strong> In <code>policy.py</code>, each one is graded as regulation, industry convention or assumption. The primary NPCI circular could not be fetched, and the repo says so.</li>
-            <li><strong>Synthetic data only.</strong> No real merchant data, so the scorer's AUC measures the pipeline, not a real-world result.</li>
+            <li><strong>Synthetic data only.</strong> No real merchant data is used, so the scorer's AUC describes this pipeline on generated data.</li>
             <li><strong>Must reproduce without an API key</strong>, so a reviewer on a fresh clone gets the same numbers.</li>
           </ul>
         </div>
@@ -112,7 +111,7 @@
           <ul>
             <li><strong>Dashboard.</strong> It shows the pipeline as a rail, a Sankey of where all 500 debits went (a test pins that edges sum to 500), the rulebook with fire and override counts, and a 24-hour clock with every executed debit as a tick.</li>
             <li><strong>Explainability.</strong> Select any unrecovered record to see its SHAP explanation, or call <code>/explain/&lt;id&gt;</code>. No API key is needed.</li>
-            <li><strong>Independent total check.</strong> <code>verify_totals</code> re-derives the headline figure from the ledger without importing the ledger code, so agreement means something.</li>
+            <li><strong>Independent total check.</strong> <code>verify_totals</code> re-derives the headline figure from the ledger without importing the ledger code, so the two totals are computed independently.</li>
           </ul>
         </div>
       </section>
@@ -158,9 +157,9 @@
           <ul class="tradeoffs">
             <li><b>Rules run before the score, and again after the agent.</b>Some debits the model rates as likely to succeed are never attempted. I accepted lower recovery in exchange for zero compliance breaches.</li>
             <li><b>The agent only sees the ambiguous middle (score 0.15–0.65).</b>Clear cases are handled deterministically, which keeps the agent's decisions few, cheap and auditable.</li>
-            <li><b>Defer, never drop.</b>A retry that falls inside a peak window moves to the window edge. It is never executed inside the window and never silently discarded.</li>
-            <li><b>No API key required.</b>A committed response cache, a deterministic fallback policy and an ablation script mean anyone can reproduce the numbers. The cost is that with an empty cache the ablation shows a ₹0 agent contribution, and the script says so explicitly instead of printing a zero that looks like a result.</li>
-            <li><b>Failures are shown, not hidden.</b>Every unrecovered record is listed, largest first. The dashboard looks less flattering, but the headline number becomes easier to trust.</li>
+            <li><b>Blocked retries are deferred.</b>A retry that falls inside a peak window moves to the end of that window. It never runs inside the window, and every deferral is recorded.</li>
+            <li><b>No API key required.</b>A committed response cache, a deterministic fallback policy and an ablation script mean anyone can reproduce the numbers. The cost is that with an empty cache the ablation shows a ₹0 agent contribution, and the script prints a note saying so next to that zero.</li>
+            <li><b>The dashboard lists every unrecovered record.</b>They're shown largest first, next to the recovered total, so anyone can check the headline number against them.</li>
           </ul>
         </div>
       </section>
@@ -168,7 +167,7 @@
         <h2 id="mandate-retry-sequencer-6">What I'd do next</h2>
         <div class="prose">
           <ul>
-            <li>Run the ablation with a key (<code>--populate</code>) to measure the agent's actual rupee contribution rather than assert it.</li>
+            <li>Run the ablation with a key (<code>--populate</code>) to measure the agent's actual rupee contribution.</li>
             <li>Replace the secondary sources for the NPCI rules with the primary circular.</li>
             <li>Test the synthetic generator's assumptions against real failure distributions from a merchant or gateway.</li>
           </ul>

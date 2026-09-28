@@ -22,13 +22,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=98d53e54">
+  <link rel="stylesheet" href="/assets/css/style.css?v=78ec161b">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Madhav K","jobTitle":"AI Developer","url":"https://maaadhavq.github.io/","email":"mailto:madhavkomanduri@gmail.com","address":{"@type":"PostalAddress","addressLocality":"Chennai","addressCountry":"IN"},"alumniOf":"Vellore Institute of Technology, Chennai","sameAs":["https://www.linkedin.com/in/madhav-k-aab202288","https://github.com/Maaadhavq"]}
   </script>
-  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
-  <script src="/assets/js/site.js?v=60b8e9ec" defer></script>
+  <script src="/assets/js/theme.js?v=f7ffb57b" defer></script>
+  <script src="/assets/js/site.js?v=2d78dd7b" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,7 +41,7 @@
     <nav class="pill" aria-label="Sections">
       <span class="pill-ind" aria-hidden="true"></span>
       <a href="#work">Work</a>
-      <a href="#beliefs">Thinking</a>
+      <a href="#beliefs">Habits</a>
       <a href="#experience">Experience</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -62,7 +62,7 @@
       <p class="punch reveal">I like problems that don't come with instructions.</p>
       <p class="who reveal">I'm an <strong>AI Developer at ADMRLS</strong> in Chennai, finishing a B.Tech in CSE (AI &amp; ML) at VIT Chennai in May 2027.</p>
       <div class="about reveal" id="about">
-        <p>I've spent the past year on the delivery side of AI: scoping client requirements at ADMRLS, building data pipelines and CI/CD at Tech Mahindra, and supporting production NLP pipelines at Virtusa. My projects start from a problem and a metric, not a model. I want a role where shipping something people can trust is the job.</p>
+        <p>Over the past year I've scoped client work at ADMRLS, built data pipelines and CI/CD at Tech Mahindra, and supported production NLP pipelines at Virtusa.</p>
       </div>
       <ul class="linkrow reveal">
         <li><a class="btn-solid magnetic" href="/assets/resume_general.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>Resume</a></li>
@@ -76,57 +76,58 @@
   <section class="section" id="work" aria-labelledby="work-title">
     <div class="wrap">
       <div class="sec-head"><h2 id="work-title">Selected work</h2><p class="hint">Hover to scroll a screenshot · click for a quick look</p></div>
+      <div class="filter-bar" hidden><span data-filter-text></span><button class="linklike" type="button" data-filter-clear>Clear</button></div>
       <div class="bento">
-        <article class="tile t-7 reveal">
+        <article class="tile t-7 reveal" data-key="mandate">
           <a class="tile-link" href="/projects/mandate-retry-sequencer.html" data-peek="peek-mandate">
-            <span class="frame"><img src="/assets/img/mandate-1280.webp" srcset="/assets/img/mandate-640.webp 640w, /assets/img/mandate-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="2311" style="--sd:3.78s" loading="lazy" decoding="async" alt="Mandate Retry Sequencer dashboard: a rail showing 500 debits in, 187 stopped by a rule, 248 routed to the agent, 266 executed and ₹44L recovered, above a Sankey of where the 500 went"></span>
+            <span class="frame" style="view-transition-name: shot-mandate"><img src="/assets/img/mandate-1280.webp" srcset="/assets/img/mandate-640.webp 640w, /assets/img/mandate-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="2311" style="--sd:3.78s" loading="lazy" decoding="async" alt="Mandate Retry Sequencer dashboard: a rail showing 500 debits in, 187 stopped by a rule, 248 routed to the agent, 266 executed and ₹44L recovered, above a Sankey of where the 500 went"></span>
             <span class="tile-meta">
-              <span class="tile-text"><span class="tile-name">Mandate Retry Sequencer</span><span class="tile-line">Recovers failed UPI Autopay debits. An AI agent proposes retries; compliance rules decide.</span></span>
+              <span class="tile-text"><span class="tile-name">Mandate Retry Sequencer</span><span class="tile-line">Recovers failed UPI Autopay debits. An AI agent suggests retries and five compliance rules approve or block each one.</span></span>
               <span class="tile-side"><span class="chip">₹44.25L recovered</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
             </span>
           </a>
         </article>
-        <article class="tile t-5 reveal">
+        <article class="tile t-5 reveal" data-key="pad">
           <a class="tile-link" href="/projects/pad-detection.html" data-peek="peek-pad">
-            <span class="frame"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1739" style="--sd:2.35s" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"></span>
+            <span class="frame" style="view-transition-name: shot-pad"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1739" style="--sd:2.35s" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"></span>
             <span class="tile-meta">
               <span class="tile-text"><span class="tile-name">PAD Detection + Risk Copilot</span><span class="tile-line">Predicts peripheral artery disease, then explains the score with sources you can check.</span></span>
               <span class="tile-side"><span class="chip">24/24 citations valid</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
             </span>
           </a>
         </article>
-        <article class="tile t-5 reveal">
+        <article class="tile t-5 reveal" data-key="epigraph">
           <a class="tile-link" href="/projects/epigraph-ai.html" data-peek="peek-epigraph">
-            <span class="frame"><img src="/assets/img/epigraph-1280.webp" srcset="/assets/img/epigraph-640.webp 640w, /assets/img/epigraph-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1319" style="--sd:1.3s" loading="lazy" decoding="async" alt="EpiGraph-AI surveillance homepage: a dark map of India with Gujarat highlighted as active, the headline India Under Watch, and a live district risk ticker"></span>
+            <span class="frame" style="view-transition-name: shot-epigraph"><img src="/assets/img/epigraph-1280.webp" srcset="/assets/img/epigraph-640.webp 640w, /assets/img/epigraph-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1319" style="--sd:1.3s" loading="lazy" decoding="async" alt="EpiGraph-AI surveillance homepage: a dark map of India with Gujarat highlighted as active, the headline India Under Watch, and a live district risk ticker"></span>
             <span class="tile-meta">
               <span class="tile-text"><span class="tile-name">EpiGraph-AI</span><span class="tile-line">Forecasts dengue outbreaks across connected districts from cases, weather and news.</span></span>
               <span class="tile-side"><span class="chip">R² 0.585</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
             </span>
           </a>
         </article>
-        <article class="tile t-7 reveal">
+        <article class="tile t-7 reveal" data-key="madharsha">
           <a class="tile-link" href="/projects/madharsha.html" data-peek="peek-madharsha">
-            <span class="frame"><img src="/assets/img/madharsha-1280.webp" srcset="/assets/img/madharsha-640.webp 640w, /assets/img/madharsha-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1012" style="--sd:1.2s" loading="lazy" decoding="async" alt="Madhar Sha customer intelligence dashboard: yesterday at a glance with visitors, busiest hour, section dwell time and unstaffed time, above a bar chart of people at the counter by hour"></span>
+            <span class="frame" style="view-transition-name: shot-madharsha"><img src="/assets/img/madharsha-1280.webp" srcset="/assets/img/madharsha-640.webp 640w, /assets/img/madharsha-1280.webp 1280w" sizes="(min-width: 48rem) 36rem, 100vw" width="1280" height="1012" style="--sd:1.2s" loading="lazy" decoding="async" alt="Madhar Sha customer intelligence dashboard: yesterday at a glance with visitors, busiest hour, section dwell time and unstaffed time, above a bar chart of people at the counter by hour"></span>
             <span class="tile-meta">
               <span class="tile-text"><span class="tile-name">Madhar Sha Customer Intelligence</span><span class="tile-line">Turns showroom camera footage into plain-language staffing and layout advice.</span></span>
               <span class="tile-side"><span class="chip">Live preview</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
             </span>
           </a>
         </article>
-        <article class="tile t-6 reveal">
+        <article class="tile t-6 reveal" data-key="finstox">
           <a class="tile-link" href="/projects/finstox.html" data-peek="peek-finstox">
-            <span class="frame"><div class="api" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div></span>
+            <span class="frame" style="view-transition-name: shot-finstox"><div class="api" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div></span>
             <span class="tile-meta">
               <span class="tile-text"><span class="tile-name">Finstox</span><span class="tile-line">The backend of a stock-trading course project: NSE predictions with the reasons attached.</span></span>
               <span class="tile-side"><span class="chip">18 API routes</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
             </span>
           </a>
         </article>
-        <article class="tile t-6 tile-pub reveal">
+        <article class="tile t-6 tile-pub reveal" data-key="paper">
           <a class="tile-link" href="https://ieeexplore.ieee.org/document/11681696/" data-peek="peek-paper">
             <span class="pub-card">
-              <span class="pub-top"><span class="pub-badge">IEEE ICISC 2026 · Published</span><span class="pub-when">pp. 890–896</span></span>
               <span class="pub-title">A Comprehensive Analysis of Lightweight CNN for Fall Detection in Hallway Monitoring</span>
+              <span class="pub-meta2">IEEE ICISC 2026 · pp. 890–896</span>
               <span class="pub-line">A CPU-only CNN that watches ordinary hallway CCTV and emails staff when someone falls, in under 50&nbsp;ms a frame.</span>
               <span class="cm cm-sm" role="img" aria-label="Confusion matrix on 115 test samples: 46 falls caught, 24 missed, 10 false alarms, 35 correct no-fall"><span class="cm-h" aria-hidden="true"><span></span><span>predicted fall</span><span>predicted no fall</span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual fall</span><span class="cm-cell cm-ok" style="--v:1.00"><b>46</b><small>falls caught</small></span><span class="cm-cell cm-err" style="--v:0.52"><b>24</b><small>falls missed</small></span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual no fall</span><span class="cm-cell cm-err" style="--v:0.22"><b>10</b><small>false alarms</small></span><span class="cm-cell cm-ok" style="--v:0.76"><b>35</b><small>correct no-fall</small></span></span></span>
               <span class="pub-foot"><span>With Sherly Alphonse, Bhenedix Paul &amp; Joshnavi Pokala</span><svg class="tile-arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 14 14 6M7 6h7v7"/></svg></span>
@@ -139,8 +140,8 @@
 
   <section class="section" id="beliefs" aria-labelledby="beliefs-title">
     <div class="wrap">
-      <div class="sec-head"><h2 id="beliefs-title">Things I believe, from building these</h2></div>
-      <ul class="beliefs"><li class="reveal"><p class="b-head" aria-label="An AI agent should propose, not decide."><span aria-hidden="true"><span class="bw" style="--i:0">An</span> <span class="bw" style="--i:1">AI</span> <span class="bw" style="--i:2">agent</span> <span class="bw" style="--i:3">should</span> <span class="bw" style="--i:4">propose,</span> <span class="bw" style="--i:5">not</span> <span class="bw" style="--i:6">decide.</span></span></p><p class="b-body">In Mandate Retry, five hard rules re-check every agent proposal before anything runs. They vetoed 11. <a href="/projects/mandate-retry-sequencer.html">Mandate Retry →</a></p></li><li class="reveal"><p class="b-head" aria-label="Asking a model for citations isn't the same as having them."><span aria-hidden="true"><span class="bw" style="--i:0">Asking</span> <span class="bw" style="--i:1">a</span> <span class="bw" style="--i:2">model</span> <span class="bw" style="--i:3">for</span> <span class="bw" style="--i:4">citations</span> <span class="bw" style="--i:5">isn't</span> <span class="bw" style="--i:6">the</span> <span class="bw" style="--i:7">same</span> <span class="bw" style="--i:8">as</span> <span class="bw" style="--i:9">having</span> <span class="bw" style="--i:10">them.</span></span></p><p class="b-body">The PAD copilot checks every [n] in code and strips any that don't point at a passage it actually retrieved. <a href="/projects/pad-detection.html">PAD Copilot →</a></p></li><li class="reveal"><p class="b-head" aria-label="The failures belong on the dashboard too."><span aria-hidden="true"><span class="bw" style="--i:0">The</span> <span class="bw" style="--i:1">failures</span> <span class="bw" style="--i:2">belong</span> <span class="bw" style="--i:3">on</span> <span class="bw" style="--i:4">the</span> <span class="bw" style="--i:5">dashboard</span> <span class="bw" style="--i:6">too.</span></span></p><p class="b-body">Mandate Retry lists all ₹82L it didn't recover, largest first, instead of showing only the ₹44L it did. <a href="/projects/mandate-retry-sequencer.html">Mandate Retry →</a></p></li><li class="reveal"><p class="b-head" aria-label="Pick the metric before the model."><span aria-hidden="true"><span class="bw" style="--i:0">Pick</span> <span class="bw" style="--i:1">the</span> <span class="bw" style="--i:2">metric</span> <span class="bw" style="--i:3">before</span> <span class="bw" style="--i:4">the</span> <span class="bw" style="--i:5">model.</span></span></p><p class="b-body">EpiGraph's success measures (MAE, RMSE, outbreak detection) were fixed before I chose the architecture. <a href="/projects/epigraph-ai.html">EpiGraph-AI →</a></p></li></ul>
+      <div class="sec-head"><h2 id="beliefs-title">Habits from these projects</h2></div>
+      <ul class="beliefs"><li class="reveal"><p class="b-head" aria-label="Five rules can veto the AI agent."><span aria-hidden="true"><span class="bw" style="--i:0">Five</span> <span class="bw" style="--i:1">rules</span> <span class="bw" style="--i:2">can</span> <span class="bw" style="--i:3">veto</span> <span class="bw" style="--i:4">the</span> <span class="bw" style="--i:5">AI</span> <span class="bw" style="--i:6">agent.</span></span></p><p class="b-body">In Mandate Retry the agent only suggests a retry. Five hard rules check each suggestion before anything runs, and they turned down 11. <a href="/projects/mandate-retry-sequencer.html">Mandate Retry →</a></p></li><li class="reveal"><p class="b-head" aria-label="Every citation is checked in code."><span aria-hidden="true"><span class="bw" style="--i:0">Every</span> <span class="bw" style="--i:1">citation</span> <span class="bw" style="--i:2">is</span> <span class="bw" style="--i:3">checked</span> <span class="bw" style="--i:4">in</span> <span class="bw" style="--i:5">code.</span></span></p><p class="b-body">The PAD copilot compares each [n] with the passages it actually retrieved and removes any that don't match. <a href="/projects/pad-detection.html">PAD Copilot →</a></p></li><li class="reveal"><p class="b-head" aria-label="The dashboard lists what failed."><span aria-hidden="true"><span class="bw" style="--i:0">The</span> <span class="bw" style="--i:1">dashboard</span> <span class="bw" style="--i:2">lists</span> <span class="bw" style="--i:3">what</span> <span class="bw" style="--i:4">failed.</span></span></p><p class="b-body">Mandate Retry shows all ₹82L it didn't recover, largest first, next to the ₹44L it did. <a href="/projects/mandate-retry-sequencer.html">Mandate Retry →</a></p></li><li class="reveal"><p class="b-head" aria-label="EpiGraph's metrics came before its model."><span aria-hidden="true"><span class="bw" style="--i:0">EpiGraph's</span> <span class="bw" style="--i:1">metrics</span> <span class="bw" style="--i:2">came</span> <span class="bw" style="--i:3">before</span> <span class="bw" style="--i:4">its</span> <span class="bw" style="--i:5">model.</span></span></p><p class="b-body">MAE, RMSE and outbreak detection accuracy were fixed before I chose the architecture. <a href="/projects/epigraph-ai.html">EpiGraph-AI →</a></p></li></ul>
     </div>
   </section>
 
@@ -156,127 +157,144 @@
   <section class="section" id="skills" aria-labelledby="skills-title">
     <div class="wrap">
       <div class="sec-head"><h2 id="skills-title">Skills</h2></div>
-      <div class="skills">
-        <div><h3>Product</h3><p>Requirements scoping, stakeholder management, cross-functional coordination, SOP and spec writing, Agile, Jira (basic)</p></div>
-        <div><h3>Analytics &amp; data</h3><p>Python, SQL, Pandas, NumPy, Excel / Google Sheets, Matplotlib, Seaborn, EDA, statistical modelling, PostgreSQL, ETL</p></div>
-        <div><h3>ML, AI &amp; GenAI</h3><p>PyTorch, TensorFlow, scikit-learn, LightGBM, XGBoost, LSTM, GAT, NLP, Hugging Face Transformers, BioBERT, LangChain, RAG, LIME, SHAP</p></div>
-        <div><h3>Backend &amp; DevOps</h3><p>FastAPI, Flask, REST APIs, SQLAlchemy, Docker, GitHub Actions CI/CD, AWS (EC2, S3), PyTest, React.js, Git, Java, C++</p></div>
-      </div>
+      <div class="skills"><div><h3>Product</h3><p>Requirements scoping, stakeholder management, cross-functional coordination, SOP and spec writing, Agile, Jira (basic)</p></div><div><h3>Analytics &amp; data</h3><p><button class="skill" type="button" data-uses="mandate pad epigraph finstox" data-label="Python" data-used="Mandate Retry, PAD Copilot, EpiGraph-AI, Finstox">Python</button>, SQL, Pandas, NumPy, Excel / Google Sheets, Matplotlib, Seaborn, EDA, statistical modelling, PostgreSQL, ETL</p></div><div><h3>ML, AI &amp; GenAI</h3><p><button class="skill" type="button" data-uses="epigraph" data-label="PyTorch" data-used="EpiGraph-AI">PyTorch</button>, <button class="skill" type="button" data-uses="finstox" data-label="TensorFlow" data-used="Finstox">TensorFlow</button>, <button class="skill" type="button" data-uses="pad" data-label="scikit-learn" data-used="PAD Copilot">scikit-learn</button>, <button class="skill" type="button" data-uses="mandate pad" data-label="LightGBM" data-used="Mandate Retry, PAD Copilot">LightGBM</button>, <button class="skill" type="button" data-uses="pad" data-label="XGBoost" data-used="PAD Copilot">XGBoost</button>, <button class="skill" type="button" data-uses="epigraph finstox" data-label="LSTM" data-used="EpiGraph-AI, Finstox">LSTM</button>, <button class="skill" type="button" data-uses="epigraph" data-label="GAT" data-used="EpiGraph-AI">GAT</button>, NLP, Hugging Face Transformers, <button class="skill" type="button" data-uses="epigraph" data-label="BioBERT" data-used="EpiGraph-AI">BioBERT</button>, LangChain, <button class="skill" type="button" data-uses="pad" data-label="RAG" data-used="PAD Copilot">RAG</button>, <button class="skill" type="button" data-uses="finstox" data-label="LIME" data-used="Finstox">LIME</button>, <button class="skill" type="button" data-uses="mandate pad finstox" data-label="SHAP" data-used="Mandate Retry, PAD Copilot, Finstox">SHAP</button></p></div><div><h3>Backend &amp; DevOps</h3><p><button class="skill" type="button" data-uses="mandate finstox" data-label="FastAPI" data-used="Mandate Retry, Finstox">FastAPI</button>, <button class="skill" type="button" data-uses="epigraph" data-label="Flask" data-used="EpiGraph-AI">Flask</button>, <button class="skill" type="button" data-uses="mandate epigraph finstox" data-label="REST APIs" data-used="Mandate Retry, EpiGraph-AI, Finstox">REST APIs</button>, SQLAlchemy, Docker, GitHub Actions CI/CD, AWS (EC2, S3), <button class="skill" type="button" data-uses="mandate pad" data-label="PyTest" data-used="Mandate Retry, PAD Copilot">PyTest</button>, <button class="skill" type="button" data-uses="mandate madharsha" data-label="React.js" data-used="Mandate Retry, Madhar Sha">React.js</button>, Git, Java, C++</p></div></div><p class="skill-read" aria-live="polite" data-default="Underlined skills are used in the projects above. Pick one to see which.">Underlined skills are used in the projects above. Pick one to see which.</p>
     </div>
   </section>
 
   <section class="section contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
       <div class="contact-card reveal">
-        <h2 id="contact-title">Let's talk.</h2>
-        <p>Want to talk about a project, or something I could help build? Email is the fastest way to reach me.</p>
+        <h2 id="contact-title">Email me</h2>
+        <p>It's the quickest way to reach me.</p>
         <p class="contact-row"><a class="email" href="mailto:madhavkomanduri@gmail.com">madhavkomanduri@gmail.com</a><button class="copy magnetic" type="button" data-copy="madhavkomanduri@gmail.com">Copy</button></p>
       </div>
     </div>
   </section>
 </main>
-<dialog class="peek" id="peek-mandate" aria-labelledby="peek-mandate-t">
+<dialog class="peek" id="peek-mandate" aria-labelledby="peek-mandate-t" data-key="mandate">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
     <figure class="peek-shot"><span class="frame"><img src="/assets/img/mandate-1280.webp" srcset="/assets/img/mandate-640.webp 640w, /assets/img/mandate-1280.webp 1280w" sizes="(min-width: 52rem) 50rem, 100vw" width="1280" height="2311" style="--sd:3.78s" loading="lazy" decoding="async" alt="Mandate Retry Sequencer dashboard: a rail showing 500 debits in, 187 stopped by a rule, 248 routed to the agent, 266 executed and ₹44L recovered, above a Sankey of where the 500 went"></span><figcaption>The live dashboard on the committed synthetic batch.</figcaption></figure>
     <div class="peek-body">
       <h3 id="peek-mandate-t">Mandate Retry Sequencer</h3>
-      <p class="tagline">Recovers failed UPI Autopay debits. An AI agent proposes retries; compliance rules decide.</p>
+      <p class="tagline">Recovers failed UPI Autopay debits. An AI agent suggests retries and five compliance rules approve or block each one.</p>
+      <div class="demo demo-clock">
+        <p class="demo-h">Try it: point at an hour</p>
+        <div class="clk-wrap">
+          <svg class="clk" viewBox="0 0 240 240" tabindex="0" role="group" aria-label="Debits by hour of day. Use the up and down arrow keys to step through the hours."><path class="wedge w-allowed" style="--o:1.00" d="M120.0 18.0A102 102 0 0 1 146.4 21.5L135.0 64.0A58 58 0 0 0 120.0 62.0Z" role="img" aria-label="00:00–01:00, allowed, 209 debits ran" data-hour="0" data-span="00:00–01:00" data-state="allowed" data-ran="209 debits ran"/><path class="wedge w-allowed" style="--o:0.44" d="M146.4 21.5A102 102 0 0 1 171.0 31.7L149.0 69.8A58 58 0 0 0 135.0 64.0Z" role="img" aria-label="01:00–02:00, allowed, 4 debits ran" data-hour="1" data-span="01:00–02:00" data-state="allowed" data-ran="4 debits ran"/><path class="wedge w-allowed" style="--o:0.41" d="M171.0 31.7A102 102 0 0 1 192.1 47.9L161.0 79.0A58 58 0 0 0 149.0 69.8Z" role="img" aria-label="02:00–03:00, allowed, 2 debits ran" data-hour="2" data-span="02:00–03:00" data-state="allowed" data-ran="2 debits ran"/><path class="wedge w-allowed" style="--o:0.41" d="M192.1 47.9A102 102 0 0 1 208.3 69.0L170.2 91.0A58 58 0 0 0 161.0 79.0Z" role="img" aria-label="03:00–04:00, allowed, 2 debits ran" data-hour="3" data-span="03:00–04:00" data-state="allowed" data-ran="2 debits ran"/><path class="wedge w-zero" d="M208.3 69.0A102 102 0 0 1 218.5 93.6L176.0 105.0A58 58 0 0 0 170.2 91.0Z" role="img" aria-label="04:00–05:00, allowed, 0 debits ran" data-hour="4" data-span="04:00–05:00" data-state="allowed" data-ran="0 debits ran"/><path class="wedge w-allowed" style="--o:0.43" d="M218.5 93.6A102 102 0 0 1 222.0 120.0L178.0 120.0A58 58 0 0 0 176.0 105.0Z" role="img" aria-label="05:00–06:00, allowed, 3 debits ran" data-hour="5" data-span="05:00–06:00" data-state="allowed" data-ran="3 debits ran"/><path class="wedge w-zero" d="M222.0 120.0A102 102 0 0 1 218.5 146.4L176.0 135.0A58 58 0 0 0 178.0 120.0Z" role="img" aria-label="06:00–07:00, allowed, 0 debits ran" data-hour="6" data-span="06:00–07:00" data-state="allowed" data-ran="0 debits ran"/><path class="wedge w-zero" d="M218.5 146.4A102 102 0 0 1 208.3 171.0L170.2 149.0A58 58 0 0 0 176.0 135.0Z" role="img" aria-label="07:00–08:00, allowed, 0 debits ran" data-hour="7" data-span="07:00–08:00" data-state="allowed" data-ran="0 debits ran"/><path class="wedge w-allowed" style="--o:0.41" d="M208.3 171.0A102 102 0 0 1 192.1 192.1L161.0 161.0A58 58 0 0 0 170.2 149.0Z" role="img" aria-label="08:00–09:00, allowed, 2 debits ran" data-hour="8" data-span="08:00–09:00" data-state="allowed" data-ran="2 debits ran"/><path class="wedge w-allowed" style="--o:0.43" d="M192.1 192.1A102 102 0 0 1 171.0 208.3L149.0 170.2A58 58 0 0 0 161.0 161.0Z" role="img" aria-label="09:00–10:00, allowed, 3 debits ran" data-hour="9" data-span="09:00–10:00" data-state="allowed" data-ran="3 debits ran"/><path class="wedge w-blocked" d="M171.0 208.3A102 102 0 0 1 146.4 218.5L135.0 176.0A58 58 0 0 0 149.0 170.2Z" role="img" aria-label="10:00–11:00, NPCI peak window, blocked, 0 debits ran" data-hour="10" data-span="10:00–11:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-blocked" d="M146.4 218.5A102 102 0 0 1 120.0 222.0L120.0 178.0A58 58 0 0 0 135.0 176.0Z" role="img" aria-label="11:00–12:00, NPCI peak window, blocked, 0 debits ran" data-hour="11" data-span="11:00–12:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-blocked" d="M120.0 222.0A102 102 0 0 1 93.6 218.5L105.0 176.0A58 58 0 0 0 120.0 178.0Z" role="img" aria-label="12:00–13:00, NPCI peak window, blocked, 0 debits ran" data-hour="12" data-span="12:00–13:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-allowed" style="--o:0.47" d="M93.6 218.5A102 102 0 0 1 69.0 208.3L91.0 170.2A58 58 0 0 0 105.0 176.0Z" role="img" aria-label="13:00–14:00, allowed, 7 debits ran" data-hour="13" data-span="13:00–14:00" data-state="allowed" data-ran="7 debits ran"/><path class="wedge w-allowed" style="--o:0.45" d="M69.0 208.3A102 102 0 0 1 47.9 192.1L79.0 161.0A58 58 0 0 0 91.0 170.2Z" role="img" aria-label="14:00–15:00, allowed, 5 debits ran" data-hour="14" data-span="14:00–15:00" data-state="allowed" data-ran="5 debits ran"/><path class="wedge w-allowed" style="--o:0.39" d="M47.9 192.1A102 102 0 0 1 31.7 171.0L69.8 149.0A58 58 0 0 0 79.0 161.0Z" role="img" aria-label="15:00–16:00, allowed, 1 debit ran" data-hour="15" data-span="15:00–16:00" data-state="allowed" data-ran="1 debit ran"/><path class="wedge w-allowed" style="--o:0.41" d="M31.7 171.0A102 102 0 0 1 21.5 146.4L64.0 135.0A58 58 0 0 0 69.8 149.0Z" role="img" aria-label="16:00–17:00, allowed, 2 debits ran" data-hour="16" data-span="16:00–17:00" data-state="allowed" data-ran="2 debits ran"/><path class="wedge w-blocked" d="M21.5 146.4A102 102 0 0 1 18.0 120.0L62.0 120.0A58 58 0 0 0 64.0 135.0Z" role="img" aria-label="17:00–18:00, NPCI peak window, blocked, 0 debits ran" data-hour="17" data-span="17:00–18:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-blocked" d="M18.0 120.0A102 102 0 0 1 21.5 93.6L64.0 105.0A58 58 0 0 0 62.0 120.0Z" role="img" aria-label="18:00–19:00, NPCI peak window, blocked, 0 debits ran" data-hour="18" data-span="18:00–19:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-blocked" d="M21.5 93.6A102 102 0 0 1 31.7 69.0L69.8 91.0A58 58 0 0 0 64.0 105.0Z" role="img" aria-label="19:00–20:00, NPCI peak window, blocked, 0 debits ran" data-hour="19" data-span="19:00–20:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><path class="wedge w-blocked" d="M31.7 69.0A102 102 0 0 1 47.9 47.9L79.0 79.0A58 58 0 0 0 69.8 91.0Z" role="img" aria-label="20:00–21:00, NPCI peak window, blocked, 0 debits ran" data-hour="20" data-span="20:00–21:00" data-state="NPCI peak window, blocked" data-ran="0 debits ran"/><g class="wedge" role="img" aria-label="21:00–22:00, blocked until 21:30, 0 debits ran" data-hour="21" data-span="21:00–22:00" data-state="blocked until 21:30" data-ran="0 debits ran"><path class="w-blocked" d="M47.9 47.9A102 102 0 0 1 57.9 39.1L84.7 74.0A58 58 0 0 0 79.0 79.0Z"/><path class="w-zero" d="M57.9 39.1A102 102 0 0 1 69.0 31.7L91.0 69.8A58 58 0 0 0 84.7 74.0Z"/></g><path class="wedge w-allowed" style="--o:0.58" d="M69.0 31.7A102 102 0 0 1 93.6 21.5L105.0 64.0A58 58 0 0 0 91.0 69.8Z" role="img" aria-label="22:00–23:00, allowed, 26 debits ran" data-hour="22" data-span="22:00–23:00" data-state="allowed" data-ran="26 debits ran"/><path class="wedge w-zero" d="M93.6 21.5A102 102 0 0 1 120.0 18.0L120.0 62.0A58 58 0 0 0 105.0 64.0Z" role="img" aria-label="23:00–00:00, allowed, 0 debits ran" data-hour="23" data-span="23:00–00:00" data-state="allowed" data-ran="0 debits ran"/><text class="clk-tick" x="120.0" y="10.0" text-anchor="middle">00</text><text class="clk-tick" x="234.0" y="124.0" text-anchor="middle">06</text><text class="clk-tick" x="120.0" y="238.0" text-anchor="middle">12</text><text class="clk-tick" x="6.0" y="124.0" text-anchor="middle">18</text><text class="clk-c1" x="120" y="116" text-anchor="middle">0 / 266</text><text class="clk-c2" x="120" y="136" text-anchor="middle">in blocked hours</text></svg>
+          <div>
+            <p class="clk-read" aria-live="polite" data-default="0 of 266 debits ran in a blocked hour.">0 of 266 debits ran in a blocked hour.</p>
+            <p class="demo-key"><span class="k k-blocked"></span>NPCI peak window (10:00–13:00, 17:00–21:30)<br><span class="k k-allowed"></span>Allowed; darker means more debits ran</p>
+            <p class="demo-cap">Every debit from the committed run on synthetic data, by hour (IST).</p>
+          </div>
+        </div>
+      </div>
       <dl class="pbr">
-        <div class="f-problem"><dt>Problem</dt><dd>Retrying a failed mandate debit is easy. Proving which retries were allowed, which were refused and what the system chose not to do is the hard part.</dd></div>
-        <div class="f-built"><dt>What I built</dt><dd>A LightGBM recoverability score, five hard compliance rules checked before and after every decision, and an LLM agent confined to the ambiguous score band. Every rupee lands in an append-only ledger.</dd></div>
+        <div class="f-problem"><dt>Problem</dt><dd>Merchants retry failed debits, but can't easily show which retries were allowed, which were refused and what each one cost.</dd></div>
+        <div class="f-built"><dt>What I built</dt><dd>A LightGBM recoverability score, five hard compliance rules checked before and after every decision, and an LLM agent limited to the uncertain score band. Each decision is written to an append-only ledger.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>₹44.25L of ₹1.26Cr at risk recovered (35%) across 500 synthetic records. 187 records stopped by a rule, 11 agent proposals vetoed, 0 of 266 debits in an NPCI peak window. 214 tests.</dd></div>
-        <div class="f-decision"><dt>Product decision</dt><dd>No score and no agent proposal can override a rule, and every unrecovered record is listed in full rather than hidden behind the headline number.</dd></div>
+        <div class="f-decision"><dt>Product decision</dt><dd>No score or agent proposal can override a rule. Every unrecovered record is listed on the dashboard, largest first.</dd></div>
       </dl>
       <p class="stack">Python · FastAPI · LightGBM · SHAP · Claude API · React · d3</p>
       <p class="links"><a class="btn-case" href="/projects/mandate-retry-sequencer.html">Read the full case study →</a><a href="https://github.com/Maaadhavq/mandate-retry-sequencer">GitHub ↗</a><a href="https://mandate-retry-frontend.onrender.com">Live demo ↗</a></p>
     </div>
   </div>
 </dialog>
-<dialog class="peek" id="peek-pad" aria-labelledby="peek-pad-t">
+<dialog class="peek" id="peek-pad" aria-labelledby="peek-pad-t" data-key="pad">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
-    <figure class="peek-shot"><span class="frame"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 52rem) 50rem, 100vw" width="1280" height="1739" style="--sd:2.35s" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"></span><figcaption>The copilot explaining a demo record, with numbered citations. The model shown here is trained on synthetic smoke-test data, not MIMIC-IV.</figcaption></figure>
+    <figure class="peek-shot"><span class="frame"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 52rem) 50rem, 100vw" width="1280" height="1739" style="--sd:2.35s" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"></span><figcaption>The copilot explaining a demo record with numbered citations. The model shown here was trained on synthetic test data.</figcaption></figure>
     <div class="peek-body">
       <h3 id="peek-pad-t">PAD Detection + Risk Copilot</h3>
       <p class="tagline">Predicts peripheral artery disease, then explains the score with sources you can check.</p>
+      <div class="demo demo-cite">
+        <p class="demo-h">Try it: hover or tap a citation</p>
+        <blockquote class="cite-quote">
+          <p>Statins lower cholesterol and certain fats in the blood, and can slow the progression of plaque buildup in the arteries, which is a key cause of PAD <span class="cite-wrap"><button class="cite" type="button" aria-describedby="src-2">[2]</button><span class="src-card" role="tooltip" id="src-2"><b>NHLBI · PAD: Treatment · Medicines</b><small>retrieved passage · retrieval score 0.725</small></span></span>.</p>
+          <p>Diabetes and hypertension are both risk factors for PAD, as they can damage blood vessels and increase the risk of atherosclerosis <span class="cite-wrap"><button class="cite" type="button" aria-describedby="src-3">[3]</button><span class="src-card" role="tooltip" id="src-3"><b>NHLBI · Peripheral Artery Disease: What Is PAD?</b><small>retrieved passage · retrieval score 0.722</small></span></span>.</p>
+          <p class="cite-bad-line">A citation the model invents gets removed: <span class="cite-wrap"><button class="cite cite-bad" type="button" aria-describedby="src-7">[7]</button><span class="src-card" role="tooltip" id="src-7"><b>Stripped</b><small>No passage 7 was retrieved, so the code removes it and flags the answer. Illustrative example from the README.</small></span></span></p>
+        </blockquote>
+        <p class="demo-cap">From a demo run of the copilot. The model in that run was trained on synthetic test data.</p>
+      </div>
       <dl class="pbr">
-        <div class="f-problem"><dt>Problem</dt><dd>A risk score on its own is of little use to a reader who can't check why it came out that way.</dd></div>
+        <div class="f-problem"><dt>Problem</dt><dd>Someone reading a risk score needs to know why it came out that way, and where each claim in the explanation comes from.</dd></div>
         <div class="f-built"><dt>What I built</dt><dd>A leakage-controlled pipeline over MIMIC-IV (13 features, 6 classifiers) and a local RAG copilot that explains each score with SHAP attributions and cited passages.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>Best AUC 0.88. The copilot retrieves the right passage for 24 of 24 golden questions, and no unresolvable citation survives. 54 tests.</dd></div>
-        <div class="f-decision"><dt>Product decision</dt><dd>Citations are verified in code, not requested in a prompt. If nothing relevant is retrieved, the copilot says so instead of answering.</dd></div>
+        <div class="f-decision"><dt>Product decision</dt><dd>Each citation is checked in code against the retrieved passages. When nothing relevant is found, the copilot says it can't answer.</dd></div>
       </dl>
       <p class="stack">Python · scikit-learn · XGBoost · LightGBM · SHAP · Ollama · Streamlit</p>
       <p class="links"><a class="btn-case" href="/projects/pad-detection.html">Read the full case study →</a><a href="https://github.com/Maaadhavq/PAD-peripheral-artery-disease-detection">GitHub ↗</a></p>
     </div>
   </div>
 </dialog>
-<dialog class="peek" id="peek-epigraph" aria-labelledby="peek-epigraph-t">
+<dialog class="peek" id="peek-epigraph" aria-labelledby="peek-epigraph-t" data-key="epigraph">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
     <figure class="peek-shot"><span class="frame"><img src="/assets/img/epigraph-1280.webp" srcset="/assets/img/epigraph-640.webp 640w, /assets/img/epigraph-1280.webp 1280w" sizes="(min-width: 52rem) 50rem, 100vw" width="1280" height="1319" style="--sd:1.3s" loading="lazy" decoding="async" alt="EpiGraph-AI surveillance homepage: a dark map of India with Gujarat highlighted as active, the headline India Under Watch, and a live district risk ticker"></span><figcaption>The surveillance web app, running locally.</figcaption></figure>
     <div class="peek-body">
       <h3 id="peek-epigraph-t">EpiGraph-AI</h3>
       <p class="tagline">Forecasts dengue outbreaks across connected districts from cases, weather and news.</p>
+      
       <dl class="pbr">
         <div class="f-problem"><dt>Problem</dt><dd>Outbreaks spread between connected districts and show up in local news before case counts, and single-signal forecasts miss both.</dd></div>
         <div class="f-built"><dt>What I built</dt><dd>A hybrid GAT + LSTM model that fuses district connectivity, case and weather history, and BioBERT news embeddings, with a surveillance web app on top.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>R² 0.585, MAE 26.74 cases, and 63% outbreak detection accuracy (prediction within 50% or 10 cases of actual).</dd></div>
-        <div class="f-decision"><dt>Product decision</dt><dd>I fixed the KPIs before choosing the architecture, and used Huber loss so sudden case spikes don't dominate training.</dd></div>
+        <div class="f-decision"><dt>Product decision</dt><dd>I fixed the metrics before choosing the architecture, and used Huber loss so sudden case spikes don't dominate training.</dd></div>
       </dl>
       <p class="stack">Python · PyTorch · GAT · LSTM · BioBERT · Flask</p>
       <p class="links"><a class="btn-case" href="/projects/epigraph-ai.html">Read the full case study →</a><a href="https://github.com/Maaadhavq/EPI-Graph">GitHub ↗</a></p>
     </div>
   </div>
 </dialog>
-<dialog class="peek" id="peek-madharsha" aria-labelledby="peek-madharsha-t">
+<dialog class="peek" id="peek-madharsha" aria-labelledby="peek-madharsha-t" data-key="madharsha">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
     <figure class="peek-shot"><span class="frame"><img src="/assets/img/madharsha-1280.webp" srcset="/assets/img/madharsha-640.webp 640w, /assets/img/madharsha-1280.webp 1280w" sizes="(min-width: 52rem) 50rem, 100vw" width="1280" height="1012" style="--sd:1.2s" loading="lazy" decoding="async" alt="Madhar Sha customer intelligence dashboard: yesterday at a glance with visitors, busiest hour, section dwell time and unstaffed time, above a bar chart of people at the counter by hour"></span><figcaption>Phase 1 preview. Figures are illustrative until it is connected to the showroom's cameras.</figcaption></figure>
     <div class="peek-body">
       <h3 id="peek-madharsha-t">Madhar Sha Customer Intelligence</h3>
       <p class="tagline">Turns showroom camera footage into plain-language staffing and layout advice.</p>
+      
       <dl class="pbr">
         <div class="f-problem"><dt>Problem</dt><dd>A shop owner can see the floor but not the pattern: when it is actually busy, which sections hold attention, and where shoppers wait with nobody serving them.</dd></div>
         <div class="f-built"><dt>What I built</dt><dd>A Phase 1 preview dashboard reporting footfall, busiest hour, section dwell time, unstaffed time and billing-counter pressure.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>Live preview. Its figures are illustrative until it is connected to the showroom's own cameras.</dd></div>
-        <div class="f-decision"><dt>Product decision</dt><dd>Each metric comes with a sentence the owner can act on, like where to put staff, instead of a chart they have to interpret.</dd></div>
+        <div class="f-decision"><dt>Product decision</dt><dd>Each metric comes with one sentence the owner can act on, like where to put staff.</dd></div>
       </dl>
       <p class="stack">Computer vision · Next.js (static)</p>
       <p class="links"><a class="btn-case" href="/projects/madharsha.html">Read the full case study →</a><a href="https://maaadhavq.github.io/madharsha-demo/">Live demo ↗</a></p>
     </div>
   </div>
 </dialog>
-<dialog class="peek" id="peek-finstox" aria-labelledby="peek-finstox-t">
+<dialog class="peek" id="peek-finstox" aria-labelledby="peek-finstox-t" data-key="finstox">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
     <figure class="peek-shot"><span class="frame"><div class="api" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div></span><figcaption>The backend's real routes.</figcaption></figure>
     <div class="peek-body">
       <h3 id="peek-finstox-t">Finstox</h3>
       <p class="tagline">The backend of a stock-trading course project: NSE predictions with the reasons attached.</p>
+      
       <dl class="pbr">
         <div class="f-problem"><dt>Problem</dt><dd>A bare price prediction gives a non-technical user no way to judge whether to trust it.</dd></div>
         <div class="f-built"><dt>What I built</dt><dd>A FastAPI backend serving LSTM predictions for NSE stocks, with LIME and SHAP explanations for each prediction, plus auth, wallet and trading routes.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>Shipped as the backend of the course project: 18 API routes, including a per-stock prediction endpoint.</dd></div>
-        <div class="f-decision"><dt>Product decision</dt><dd>Explanations for every prediction rather than global feature importance, because the user's question is about the stock in front of them.</dd></div>
+        <div class="f-decision"><dt>Product decision</dt><dd>Each prediction gets its own LIME and SHAP explanation, because users ask about one stock at a time.</dd></div>
       </dl>
       <p class="stack">Python · FastAPI · TensorFlow/Keras · LIME · SHAP</p>
       <p class="links"><a class="btn-case" href="/projects/finstox.html">Read the full case study →</a><a href="https://github.com/Maaadhavq/finstox-backend">GitHub ↗</a></p>
     </div>
   </div>
 </dialog>
-<dialog class="peek" id="peek-paper" aria-labelledby="peek-paper-t">
+<dialog class="peek" id="peek-paper" aria-labelledby="peek-paper-t" data-key="paper">
   <div class="peek-inner">
     <button class="peek-close" type="button" data-close aria-label="Close"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 5l10 10M15 5 5 15"/></svg></button>
     <div class="peek-body">
-      <p class="pub-badge pub-badge-light">IEEE ICISC 2026 · Published 5 Aug 2026</p>
       <h3 id="peek-paper-t">A Comprehensive Analysis of Lightweight CNN for Fall Detection in Hallway Monitoring</h3>
-      <p class="tagline">Sherly Alphonse, Bhenedix Paul, Madhav K and Joshnavi Pokala. 10th International Conference on Inventive Systems and Control (ICISC), Coimbatore, pp. 890–896. DOI <a href="https://doi.org/10.1109/ICISC69558.2026.11681696">10.1109/ICISC69558.2026.11681696</a></p>
+      <p class="tagline">Sherly Alphonse, Bhenedix Paul, Madhav K and Joshnavi Pokala. 10th International Conference on Inventive Systems and Control (ICISC), Coimbatore, pp. 890–896, published 5 August 2026. DOI <a href="https://doi.org/10.1109/ICISC69558.2026.11681696">10.1109/ICISC69558.2026.11681696</a></p>
       <dl class="pbr">
         <div class="f-problem"><dt>Problem</dt><dd>Fall detection research mostly targets elderly care, where a system must tell a fall from lying down or sleeping. A school, hotel or office hallway needs one answer, fast: did someone fall?</dd></div>
         <div class="f-built"><dt>What we built</dt><dd>A lightweight binary CNN (one sigmoid output, augmentation, dropout and batch norm) that runs on existing CCTV without a GPU, plus an email alert to reception or security when it detects a fall.</dd></div>
         <div class="f-result"><dt>Result</dt><dd>Under 50&nbsp;ms per frame on CPU. On 115 test samples: 70% accuracy and AUC 0.71; on the fall class, 0.82 precision and 0.66 recall.</dd></div>
-        <div class="f-decision"><dt>Trade-off</dt><dd>Far less compute than R-CNN-style detectors, at the cost of accuracy: GPU-based methods in the literature report around 90%. One decision threshold can be tuned toward fall recall, which matters most for safety.</dd></div>
+        <div class="f-decision"><dt>Trade-off</dt><dd>It needs far less compute than R-CNN-style detectors, and gives up accuracy for it: GPU-based methods in the literature report around 90%. A single decision threshold can be tuned to catch more falls.</dd></div>
       </dl>
       <span class="cm cm-lg" role="img" aria-label="Confusion matrix on 115 test samples: 46 falls caught, 24 missed, 10 false alarms, 35 correct no-fall"><span class="cm-h" aria-hidden="true"><span></span><span>predicted fall</span><span>predicted no fall</span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual fall</span><span class="cm-cell cm-ok" style="--v:1.00"><b>46</b><small>falls caught</small></span><span class="cm-cell cm-err" style="--v:0.52"><b>24</b><small>falls missed</small></span></span><span class="cm-row" aria-hidden="true"><span class="cm-l">actual no fall</span><span class="cm-cell cm-err" style="--v:0.22"><b>10</b><small>false alarms</small></span><span class="cm-cell cm-ok" style="--v:0.76"><b>35</b><small>correct no-fall</small></span></span></span>
       <p class="links"><a class="btn-case" href="https://ieeexplore.ieee.org/document/11681696/">Read on IEEE Xplore ↗</a></p>

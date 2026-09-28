@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=98d53e54">
+  <link rel="stylesheet" href="/assets/css/style.css?v=78ec161b">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
-  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
-  <script src="/assets/js/site.js?v=60b8e9ec" defer></script>
+  <script src="/assets/js/theme.js?v=f7ffb57b" defer></script>
+  <script src="/assets/js/site.js?v=2d78dd7b" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
     <nav class="pill" aria-label="Sections">
       <span class="pill-ind" aria-hidden="true"></span>
       <a href="/#work">Work</a>
-      <a href="/#beliefs">Thinking</a>
+      <a href="/#beliefs">Habits</a>
       <a href="/#experience">Experience</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -56,17 +56,16 @@
   <div class="wrap">
     <div class="case-head">
       <a class="back" href="/#work">← All work</a>
-      <p class="kicker">Case study · Health · RAG</p>
       <h1>PAD Detection + Risk Copilot</h1>
       <p class="lede">Two halves of one project: a machine learning pipeline that predicts peripheral artery disease (PAD) from routine hospital data, and a RAG copilot that turns each prediction into an explanation a reader can check.</p>
-      <dl class="facts"><div><dt>Stack</dt><dd>Python, scikit-learn, XGBoost, LightGBM, SHAP, Ollama, Streamlit</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/PAD-peripheral-artery-disease-detection">GitHub</a></dd></div></dl>
+      <dl class="facts"><div><dt>Area</dt><dd>Health · RAG</dd></div><div><dt>Stack</dt><dd>Python, scikit-learn, XGBoost, LightGBM, SHAP, Ollama, Streamlit</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/PAD-peripheral-artery-disease-detection">GitHub</a></dd></div></dl>
     </div>
-    <figure class="shot case-shot"><img src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="1739" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"><figcaption>The copilot explaining a demo record, with numbered citations. The model shown here is trained on synthetic smoke-test data, not MIMIC-IV.</figcaption></figure>
+    <figure class="shot case-shot"><img style="view-transition-name: shot-pad" src="/assets/img/pad-1280.webp" srcset="/assets/img/pad-640.webp 640w, /assets/img/pad-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="1739" loading="lazy" decoding="async" alt="PAD Risk Copilot: a PAD probability, the top SHAP factors as bars, and a written explanation citing numbered NHLBI and CDC passages"><figcaption>The copilot explaining a demo record with numbered citations. The model shown here was trained on synthetic test data.</figcaption></figure>
     <article class="case">
       <section aria-labelledby="pad-detection-0">
         <h2 id="pad-detection-0">Problem</h2>
         <div class="prose">
-          <p>The pipeline predicts PAD from data a hospital already collects: labs, demographics, comorbidities and medications. But a prediction on its own is of little use to a reader who can't check it. The copilot answers <em>why this score?</em> with SHAP attributions and cited passages from public clinical references.</p>
+          <p>The pipeline predicts PAD from data a hospital already collects: labs, demographics, comorbidities and medications. The copilot answers <em>why this score?</em> with SHAP attributions and cited passages from public clinical references.</p>
         </div>
       </section>
       <section aria-labelledby="pad-detection-1">
@@ -81,7 +80,7 @@
           <ul>
             <li><strong>Data use agreement.</strong> MIMIC-IV values cannot be sent to a third party under the PhysioNet agreement, so the language model runs locally through Ollama and no API is used.</li>
             <li><strong>Hardware.</strong> Both models (llama3.1:8b and nomic-embed-text) have to fit together on an 8 GB GPU.</li>
-            <li><strong>Noisy label.</strong> The label is a billing code, not a diagnosis, and MIMIC-IV is an ICU population, sicker than the general public.</li>
+            <li><strong>Noisy label.</strong> The label is a billing code, which can miss or mislabel patients, and MIMIC-IV is an ICU population, sicker than the general public.</li>
             <li><strong>Missing signals.</strong> There is no ankle-brachial index, no smoking status and no imaging in these tables.</li>
           </ul>
         </div>
@@ -95,7 +94,7 @@
             <li>Patient-level cohort and split, so no one appears as both a case and a control, or in both train and test.</li>
             <li>Comorbidities and medications come only from strictly earlier admissions. Statins are the standard PAD treatment, so counting them from the index stay would leak the diagnosis.</li>
             <li>Controls matched 1:1 on age bracket × gender, so the model has to learn something clinical.</li>
-            <li>Drug names are matched exactly, not by substring (a bare <code>statin</code> pattern also matches <em>nystatin</em>, an antifungal).</li>
+            <li>Drug names are matched exactly. A bare <code>statin</code> substring would also match <em>nystatin</em>, an antifungal.</li>
           </ul>
           <p><strong>The copilot.</strong> It scores the record, computes SHAP attributions, retrieves passages from an index of NHLBI and CDC pages plus a model card, asks a local LLM to explain citing those passages, then <strong>verifies every citation in code</strong>. Any <code>[n]</code> that doesn't resolve to a retrieved passage is stripped and flagged. There's a Streamlit UI on top.</p>
         </div>
@@ -115,17 +114,17 @@
               <tr><td>Automated tests (synthetic MIMIC-shaped fixture)</td><td class="num">54</td></tr>
             </tbody>
           </table></div>
-          <p>The two answers without a citation are flagged as ungrounded in the UI, not passed off as sourced.</p>
+          <p>The two answers without a citation are marked as ungrounded in the UI.</p>
         </div>
       </section>
       <section aria-labelledby="pad-detection-5">
         <h2 id="pad-detection-5">Trade-offs I made</h2>
         <div class="prose">
           <ul class="tradeoffs">
-            <li><b>A local 8B model instead of a stronger hosted one.</b>The answers are weaker, but it's the only option the data agreement allows. The weaker model is also exactly why citation checking has to live in code.</li>
-            <li><b>The copilot refuses rather than improvises.</b>If no passage clears the relevance threshold, the LLM is never called and the copilot says so.</li>
-            <li><b>No silent fallback embedder.</b>An offline hashing embedder exists for tests but must be requested by name. It scores 0.79 / 0.54 (hit@6 / hit@1) against 1.00 / 0.79 for real embeddings, and a quiet fallback would hide that gap.</li>
-            <li><b>Wording SHAP as score movement, not causation.</b>Given "statin therapy increases", the model once wrote that statins increase PAD risk. Factors are now phrased as "pushed the score up/down".</li>
+            <li><b>A local 8B model.</b>The data agreement rules out hosted models, so the copilot runs llama3.1:8b locally. Its answers are weaker, which is one reason citations are checked in code.</li>
+            <li><b>The copilot can decline to answer.</b>If no passage clears the relevance threshold, the LLM is never called and the copilot says so.</li>
+            <li><b>The test embedder must be asked for by name.</b>An offline hashing embedder exists for tests. It scores 0.79 / 0.54 (hit@6 / hit@1) against 1.00 / 0.79 for real embeddings, so it is never swapped in automatically.</li>
+            <li><b>SHAP factors are worded as score movement.</b>Given "statin therapy increases", the model once wrote that statins increase PAD risk. Factors are now phrased as "pushed the score up/down".</li>
             <li><b>Only prior admissions for comorbidities and medications.</b>This gives up some signal to avoid leaking the diagnosis into the features.</li>
           </ul>
         </div>
@@ -134,7 +133,7 @@
         <h2 id="pad-detection-6">What I'd do next</h2>
         <div class="prose">
           <ul>
-            <li>Calibrate the probabilities (Platt or isotonic). Matched controls change the base rate, so today's output is a discrimination score, not a probability.</li>
+            <li>Calibrate the probabilities (Platt or isotonic). Matched controls change the base rate, so today's scores rank patients well but need calibrating before they can be read as probabilities.</li>
             <li>Rerank retrieved passages before generation.</li>
             <li>Add features from MIMIC-IV-Note clinical notes, such as smoking status and mentions of claudication.</li>
           </ul>

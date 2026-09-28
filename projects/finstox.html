@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=98d53e54">
+  <link rel="stylesheet" href="/assets/css/style.css?v=78ec161b">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
-  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
-  <script src="/assets/js/site.js?v=60b8e9ec" defer></script>
+  <script src="/assets/js/theme.js?v=f7ffb57b" defer></script>
+  <script src="/assets/js/site.js?v=2d78dd7b" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
     <nav class="pill" aria-label="Sections">
       <span class="pill-ind" aria-hidden="true"></span>
       <a href="/#work">Work</a>
-      <a href="/#beliefs">Thinking</a>
+      <a href="/#beliefs">Habits</a>
       <a href="/#experience">Experience</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -56,12 +56,11 @@
   <div class="wrap">
     <div class="case-head">
       <a class="back" href="/#work">← All work</a>
-      <p class="kicker">Case study · Fintech · XAI</p>
       <h1>Finstox</h1>
-      <p class="lede">The backend for Finstox, a stock-trading demo website built for a Web Programming course. It is not a real trading platform. It serves LSTM price predictions for NSE stocks with a LIME and SHAP explanation for every prediction.</p>
-      <dl class="facts"><div><dt>Role</dt><dd>Backend</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, TensorFlow/Keras, LIME, SHAP, JWT auth</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/finstox-backend">GitHub</a></dd></div></dl>
+      <p class="lede">The backend for Finstox, a stock-trading demo website built for a Web Programming course, with no real trading. It serves LSTM price predictions for NSE stocks with a LIME and SHAP explanation for every prediction.</p>
+      <dl class="facts"><div><dt>Area</dt><dd>Fintech · XAI</dd></div><div><dt>Role</dt><dd>Backend</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, TensorFlow/Keras, LIME, SHAP, JWT auth</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/finstox-backend">GitHub</a></dd></div></dl>
     </div>
-    <figure class="shot case-shot"><div class="api" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div><figcaption>The backend's real routes. <code>/predict/{symbol}</code> serves the LSTM forecast.</figcaption></figure>
+    <figure class="shot case-shot"><div class="api" style="view-transition-name: shot-finstox" role="img" aria-label="List of the Finstox backend API endpoints, including GET /predict/{symbol}"><div class="api-title">finstox-backend · FastAPI · 18 routes</div><ul><li class=""><b>GET</b>/isMarketOpen</li><li class=""><b>GET</b>/getSearchSuggestions</li><li class=""><b>GET</b>/getSearchSuggestionsFull</li><li class=""><b>GET</b>/getTopGainers</li><li class=""><b>GET</b>/getTopLosers</li><li class=""><b>GET</b>/getStock</li><li class=""><b>GET</b>/getHoldings</li><li class=""><b>GET</b>/checkUsername</li><li class="post"><b>POST</b>/register</li><li class="post"><b>POST</b>/login</li><li class=""><b>GET</b>/getWallet</li><li class="post"><b>POST</b>/deposit</li><li class="post"><b>POST</b>/withdraw</li><li class=""><b>GET</b>/getQtyOwned</li><li class="post"><b>POST</b>/buy</li><li class="post"><b>POST</b>/sell</li><li class=" hot"><b>GET</b>/predict/{symbol}</li></ul></div><figcaption>The backend's real routes. <code>/predict/{symbol}</code> serves the LSTM forecast.</figcaption></figure>
     <article class="case">
       <section aria-labelledby="finstox-0">
         <h2 id="finstox-0">Problem</h2>
@@ -79,7 +78,7 @@
         <h2 id="finstox-2">Constraints</h2>
         <div class="prose">
           <ul>
-            <li>A course project, built as a demo and not a regulated trading service.</li>
+            <li>A course project and demo, with no real money involved.</li>
             <li>Only free public market data, fetched through <code>yfinance</code> and <code>nsepython</code>.</li>
           </ul>
         </div>
@@ -98,7 +97,7 @@
         <h2 id="finstox-5">Trade-offs I made</h2>
         <div class="prose">
           <ul class="tradeoffs">
-            <li><b>Explanations for each prediction, not global feature importance.</b>The user's question is about the stock in front of them, not the model in general.</li>
+            <li><b>An explanation for each prediction.</b>Users ask about one stock at a time, so each forecast gets its own LIME and SHAP breakdown.</li>
           </ul>
         </div>
       </section>

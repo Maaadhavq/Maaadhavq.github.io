@@ -409,3 +409,74 @@ html:not(.js) .swap > span:first-child { transform: none; opacity: 1; }
 
 /* ---------- punch line ---------- */
 .intro .punch { font-family: var(--f-head); font-weight: 600; font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); margin: -0.5rem 0 1.5rem; max-width: 42ch; }
+
+/* ---------- round 7: live demos in the quick looks ---------- */
+.demo { border: 1px solid var(--line); border-radius: 8px; padding: 1rem; margin: 0 0 1.25rem; }
+.demo-h { font-size: 0.8rem; font-weight: 700; color: var(--graphite); margin: 0 0 0.75rem; }
+.demo-cap { font-size: 0.78rem; color: var(--graphite); margin: 0; }
+.clk-wrap { display: grid; gap: 1rem; align-items: center; }
+@media (min-width: 36rem) { .clk-wrap { grid-template-columns: 13rem minmax(0, 1fr); } }
+.clk { display: block; width: 100%; max-width: 13rem; height: auto; margin: 0 auto; border-radius: 50%; }
+.clk .wedge { cursor: pointer; transition: opacity 0.2s; }
+.clk path { stroke: var(--surface); stroke-width: 1.5; }
+.clk .w-blocked { fill: color-mix(in srgb, var(--rose-fill) 62%, transparent); }
+.clk .w-allowed { fill: var(--brass-fill); fill-opacity: var(--o, 0.6); }
+.clk .w-zero { fill: var(--line); }
+.clk:has(.on) .wedge:not(.on) { opacity: 0.45; }
+.clk .wedge.on, .clk .wedge.on path { stroke: var(--ink); stroke-width: 2.5; }
+.clk-tick { font: 500 9px var(--f-mono); fill: var(--graphite); }
+.clk-c1 { font: 700 16px var(--f-head); fill: var(--ink); }
+.clk-c2 { font: 500 8.5px var(--f-mono); fill: var(--graphite); }
+.clk-read { font-weight: 700; margin: 0 0 0.6rem; min-height: 3em; }
+.demo-key { font-size: 0.82rem; color: var(--graphite); margin: 0 0 0.5rem; line-height: 1.8; }
+.demo-key .k { display: inline-block; width: 0.8rem; height: 0.8rem; border-radius: 2px; margin-right: 0.45rem; vertical-align: -1px; }
+.k-blocked { background: color-mix(in srgb, var(--rose-fill) 62%, transparent); }
+.k-allowed { background: var(--brass-fill); }
+
+.cite-quote { margin: 0 0 0.6rem; padding: 0; font-size: 0.95rem; }
+.cite-quote p { margin: 0 0 0.6rem; }
+.cite-bad-line { color: var(--graphite); font-size: 0.88rem; }
+.cite-wrap { position: relative; display: inline-block; }
+.cite { font: 600 0.78em var(--f-mono); color: var(--blue); background: none; border: 1px solid color-mix(in srgb, var(--blue) 45%, transparent); border-radius: 4px; padding: 0.05em 0.3em; cursor: pointer; vertical-align: 0.1em; }
+.cite:hover, .cite-wrap.open .cite { background: var(--accent-soft); }
+.cite-bad { color: var(--rose); border-color: color-mix(in srgb, var(--rose-fill) 55%, transparent); text-decoration: line-through; }
+.src-card { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 3; width: max-content; max-width: 15rem; padding: 0.6rem 0.75rem; border-radius: 6px; background: var(--ink); color: var(--paper); font: 400 0.8rem/1.4 var(--f-body); opacity: 0; pointer-events: none; transform: translate(calc(-50% + var(--dx, 0px)), 4px); transition: opacity 0.18s, transform 0.18s; }
+.src-card b { display: block; font-weight: 700; }
+.src-card small { display: block; opacity: 0.8; margin-top: 0.15rem; font-size: 0.75rem; }
+.cite-wrap:hover .src-card, .cite:focus-visible + .src-card, .cite-wrap.open .src-card { opacity: 1; transform: translate(calc(-50% + var(--dx, 0px)), 0); }
+
+/* ---------- round 7: skills point to work ---------- */
+.skill { font: inherit; line-height: inherit; color: var(--ink); background: none; border: 0; padding: 0; border-bottom: 1.5px dotted color-mix(in srgb, var(--brass-fill) 85%, transparent); cursor: pointer; }
+.skill:hover, .skill:focus-visible { color: var(--blue); border-bottom-style: solid; }
+.skill.on { color: var(--blue); font-weight: 700; border-bottom: 2px solid var(--brass-fill); }
+.skill-read { margin: 1.25rem 0 0; font-size: 0.92rem; color: var(--graphite); min-height: 1.6em; }
+.filter-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.25rem 1rem; margin: -0.5rem 0 1rem; padding: 0.4rem 0.9rem; border: 1px solid color-mix(in srgb, var(--brass-fill) 60%, transparent); border-radius: 8px; background: var(--accent-soft); font-weight: 700; font-size: 0.92rem; }
+.filter-bar[hidden] { display: none; }
+.filter-bar .linklike { min-height: 2.25rem; }
+html.js .bento .tile.reveal { transition: opacity 0.45s ease, transform 0.6s cubic-bezier(.3,.7,.2,1), filter 0.45s ease; }
+.bento.filtering .tile:not(.match) { opacity: 0.28; filter: grayscale(1); }
+.bento.filtering .tile.match .tile-link { border-color: var(--brass-fill); }
+
+/* ---------- round 7: quick-look prev/next ---------- */
+.peek-nav { position: sticky; top: 0; float: left; z-index: 2; display: flex; align-items: center; gap: 0.2rem; margin: 0 0 -2.5rem; padding: 0.2rem; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); }
+.peek-step { display: grid; place-items: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; border: 0; background: transparent; color: var(--ink); font: 700 1rem var(--f-body); cursor: pointer; }
+.peek-step:hover { background: var(--paper); }
+.peek-count { font: 500 0.72rem var(--f-mono); color: var(--graphite); min-width: 2.6rem; text-align: center; }
+#peek-paper .peek-body { padding-top: 3.4rem; }
+.peek.no-anim[open], .peek.no-anim[open]::backdrop { animation: none; }
+
+/* ---------- round 7: paper tile meta line (no badge above the title) ---------- */
+.pub-meta2 { display: block; font: 500 0.72rem var(--f-mono); color: #f2be4a; }
+
+/* ---------- round 7: page and theme transitions ---------- */
+@view-transition { navigation: auto; }
+.site-header { view-transition-name: site-header; }
+::view-transition-group(*) { animation-duration: 0.4s; animation-timing-function: cubic-bezier(.2,.7,.1,1); }
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: 0.28s; }
+html.theme-vt::view-transition-old(root), html.theme-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+html.theme-vt .site-header, html.theme-vt [style*="view-transition-name"] { view-transition-name: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+  .src-card, .clk .wedge { transition: none; }
+}

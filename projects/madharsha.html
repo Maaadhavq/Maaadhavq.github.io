@@ -22,10 +22,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400&family=Martian+Mono:wdth,wght@87.5,400;87.5,500&display=swap">
-  <link rel="stylesheet" href="/assets/css/style.css?v=98d53e54">
+  <link rel="stylesheet" href="/assets/css/style.css?v=78ec161b">
   <script>(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);document.documentElement.classList.add('js');setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in')})},2500)})()</script>
-  <script src="/assets/js/theme.js?v=66ec94d7" defer></script>
-  <script src="/assets/js/site.js?v=60b8e9ec" defer></script>
+  <script src="/assets/js/theme.js?v=f7ffb57b" defer></script>
+  <script src="/assets/js/site.js?v=2d78dd7b" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -38,7 +38,7 @@
     <nav class="pill" aria-label="Sections">
       <span class="pill-ind" aria-hidden="true"></span>
       <a href="/#work">Work</a>
-      <a href="/#beliefs">Thinking</a>
+      <a href="/#beliefs">Habits</a>
       <a href="/#experience">Experience</a>
       <a href="/#contact">Contact</a>
     </nav>
@@ -56,17 +56,16 @@
   <div class="wrap">
     <div class="case-head">
       <a class="back" href="/#work">← All work</a>
-      <p class="kicker">Case study · Retail · Vision</p>
       <h1>Madhar Sha Customer Intelligence</h1>
       <p class="lede">A Phase 1 preview of customer intelligence for a retail showroom. It turns camera views of the shop floor into a short report the owner can act on: when the shop is actually busy, which sections hold shoppers, and where they wait with nobody serving them.</p>
-      <dl class="facts"><div><dt>Stack</dt><dd>Computer vision, static Next.js build</dd></div><div><dt>Links</dt><dd><a href="https://maaadhavq.github.io/madharsha-demo/">Live demo</a></dd></div></dl>
+      <dl class="facts"><div><dt>Area</dt><dd>Retail · Vision</dd></div><div><dt>Stack</dt><dd>Computer vision, static Next.js build</dd></div><div><dt>Links</dt><dd><a href="https://maaadhavq.github.io/madharsha-demo/">Live demo</a></dd></div></dl>
     </div>
-    <figure class="shot case-shot"><img src="/assets/img/madharsha-1280.webp" srcset="/assets/img/madharsha-640.webp 640w, /assets/img/madharsha-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="1012" loading="lazy" decoding="async" alt="Madhar Sha customer intelligence dashboard: yesterday at a glance with visitors, busiest hour, section dwell time and unstaffed time, above a bar chart of people at the counter by hour"><figcaption>Phase 1 preview. Figures are illustrative until it is connected to the showroom's cameras.</figcaption></figure>
+    <figure class="shot case-shot"><img style="view-transition-name: shot-madharsha" src="/assets/img/madharsha-1280.webp" srcset="/assets/img/madharsha-640.webp 640w, /assets/img/madharsha-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="1012" loading="lazy" decoding="async" alt="Madhar Sha customer intelligence dashboard: yesterday at a glance with visitors, busiest hour, section dwell time and unstaffed time, above a bar chart of people at the counter by hour"><figcaption>Phase 1 preview. Figures are illustrative until it is connected to the showroom's cameras.</figcaption></figure>
     <article class="case">
       <section aria-labelledby="madharsha-0">
         <h2 id="madharsha-0">Problem</h2>
         <div class="prose">
-          <p>A shop owner can see the floor but not the pattern. Staff are placed by habit rather than by when shoppers actually arrive, some sections hold attention much longer than others, and shoppers can stand in a section with nobody nearby while staff are pulled to the till.</p>
+          <p>A shop owner can see the floor but not the pattern. The owner places staff from experience, without data on when shoppers actually arrive; some sections hold attention much longer than others, and shoppers can stand in a section with nobody nearby while staff are pulled to the till.</p>
         </div>
       </section>
       <section aria-labelledby="madharsha-1">
@@ -81,7 +80,7 @@
           <ul>
             <li>The preview is <strong>not yet connected to the showroom's own cameras</strong>, so every figure shown is illustrative.</li>
             <li>Until then, the footage and annotations come from public datasets: CARR (Customer Activity Recognition in Retail, CC BY 4.0) and retail_gaze.</li>
-            <li>The readers are shop staff, not analysts.</li>
+            <li>The readers are shop staff with no analytics background.</li>
           </ul>
         </div>
       </section>
@@ -101,8 +100,8 @@
         <h2 id="madharsha-5">Trade-offs I made</h2>
         <div class="prose">
           <ul class="tradeoffs">
-            <li><b>Plain-language advice over charts.</b>Every number comes with a sentence saying what to do, such as putting the most knowledgeable staff near the section shoppers linger in. The owner doesn't have to interpret a chart.</li>
-            <li><b>Honest labelling.</b>The preview says clearly that its figures are illustrative, rather than presenting demo data as the shop's own.</li>
+            <li><b>Every number comes with advice.</b>Each one has a sentence saying what to do, such as putting the most knowledgeable staff near the section shoppers linger in.</li>
+            <li><b>Demo figures are labelled.</b>The preview states that its figures are illustrative until the showroom's cameras are connected.</li>
           </ul>
         </div>
       </section>

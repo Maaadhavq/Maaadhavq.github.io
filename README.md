@@ -10,9 +10,13 @@ Plain HTML, CSS and vanilla JavaScript. No framework and no build step.
   The headline's last word cycles through things I've shipped: products, copilots, dashboards, pipelines.
 - **Selected work.** A grid of real screenshots of each project running. Hover a tile to scroll through
   the screenshot. Click one for a quick look (problem, what I built, result, product decision), with a
-  link to the full case study.
-- **Things I believe.** Four principles from building these projects, each linked to the project it
-  came from.
+  link to the full case study. Use ←/→ (or swipe) to move between quick looks. Two of them have
+  live demos with real data: an hour-by-hour NPCI clock for Mandate Retry and hoverable citations
+  from the PAD copilot.
+- **Habits from these projects.** Four plain statements about how the projects work, each linked
+  to the project it describes.
+- **Skills.** Skills used in the projects on the page are clickable: picking one highlights the
+  projects that use it.
 - **Experience, skills and contact.**
 - **Case studies** (`projects/*.html`): problem, users, constraints, what I built, metrics,
   trade-offs and what I'd do next. The Mandate Retry case study includes a canvas replay of that
@@ -26,8 +30,10 @@ Plain HTML, CSS and vanilla JavaScript. No framework and no build step.
 - **Type.** Bricolage Grotesque for headings, Atkinson Hyperlegible Next for body text, and
   Martian Mono for dates and data. All from Google Fonts.
 - **Motion.** Word-by-word headline reveal, a cycling headline word, scroll-on-hover screenshots, a
-  cursor label over project tiles, magnetic buttons, a scroll progress line, beliefs that light up
-  as they scroll into view, and a highlight that follows the nav. All motion switches off for
+  cursor label over project tiles, magnetic buttons, a scroll progress line, habits that light up
+  as they scroll into view, a highlight that follows the nav, page transitions where the project
+  screenshot morphs into the case-study header, and a light/dark switch that spreads as a circle
+  from the button (View Transitions API, where the browser supports it). All motion switches off for
   visitors who ask for reduced motion, and the page works without JavaScript.
 
 ## Layout
