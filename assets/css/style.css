@@ -406,3 +406,6 @@ html:not(.js) .swap > span:first-child { transform: none; opacity: 1; }
 .cm-lg .cm-cell { min-height: 3.6rem; }
 .cm-lg .cm-cell b { font-size: 1.25rem; }
 @media (max-width: 30rem) { .cm-h, .cm-row { grid-template-columns: 4.2rem 1fr 1fr; } }
+
+/* ---------- punch line ---------- */
+.intro .punch { font-family: var(--f-head); font-weight: 600; font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); letter-spacing: -0.015em; line-height: 1.3; color: var(--ink); margin: -0.5rem 0 1.5rem; max-width: 42ch; }
