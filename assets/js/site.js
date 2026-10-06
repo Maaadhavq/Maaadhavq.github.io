@@ -188,6 +188,18 @@
     if (b) { place(b.parentNode); b.parentNode.classList.toggle('open'); }
   });
 
+  // ---- Live demo: OnLabel claims (all panels show without JS; JS shows one at a time) ----
+  document.querySelectorAll('.demo-claims').forEach(function (box) {
+    var btns = Array.prototype.slice.call(box.querySelectorAll('.cl'));
+    var panels = Array.prototype.slice.call(box.querySelectorAll('.cl-panel'));
+    function pick(n) {
+      btns.forEach(function (b) { var on = b.getAttribute('data-n') === n; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+      panels.forEach(function (p) { p.hidden = p.getAttribute('data-n') !== n; });
+    }
+    btns.forEach(function (b) { b.addEventListener('click', function () { pick(b.getAttribute('data-n')); }); });
+    pick('1');
+  });
+
   // ---- Skills point to work ----
   var skillRead = document.querySelector('.skill-read'), bento = document.querySelector('.bento');
   var fbar = document.querySelector('.filter-bar'), activeSkill = null;
