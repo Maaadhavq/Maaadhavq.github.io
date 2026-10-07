@@ -57,7 +57,7 @@
     <div class="case-head">
       <a class="back" href="/#work">← All work</a>
       <h1>OnLabel</h1>
-      <p class="lede">OnLabel checks pharma promotional copy against the FDA label. It finds each claim, judges it with open-weight models over hybrid retrieval, and shows the exact label text behind every verdict. Plain-code checks reject any verdict whose quotes or figures are missing from the label, and a reviewer makes every decision.</p>
+      <p class="lede">OnLabel checks pharma promotional copy against the FDA label. It finds each claim, judges it with open-weight models over hybrid retrieval, and shows the exact label text behind every verdict. Plain-code checks reject any verdict whose quotes or figures are missing from the label, or whose claim leaves out a condition the quoted indication attaches, and a reviewer makes every decision.</p>
       <dl class="facts"><div><dt>Area</dt><dd>Pharma compliance · RAG</dd></div><div><dt>Role</dt><dd>Solo: design, build, evaluation, deploy</dd></div><div><dt>Stack</dt><dd>Python, FastAPI, ONNX Runtime, BM25 + bge-small, gpt-oss / Qwen / Gemma, React, Docker, Render</dd></div><div><dt>Links</dt><dd><a href="https://github.com/Maaadhavq/onlabel">GitHub</a> · <a href="https://onlabel-web.onrender.com">Live demo</a> · <a href="https://onlabel-web.onrender.com/#evals">How it was tested</a></dd></div></dl>
     </div>
     <figure class="shot case-shot"><img style="view-transition-name: shot-onlabel" src="/assets/img/onlabel-1280.webp" srcset="/assets/img/onlabel-640.webp 640w, /assets/img/onlabel-1280.webp 1280w" sizes="(min-width: 62rem) 60rem, 100vw" width="1280" height="1021" loading="lazy" decoding="async" alt="OnLabel reviewing an Ozempic banner: three claims underlined in the copy, the first marked not in the label, with the label's Indications text highlighted as evidence and a boxed-warning risk notice below"><figcaption>The live demo reviewing its Ozempic banner sample (synthetic test copy).</figcaption></figure>
@@ -92,7 +92,7 @@
             <li><strong>Claim splitting.</strong> A fast open-weight model copies each claim out of the copy. Every claim must be found there word for word, and sentences are the fallback.</li>
             <li><strong>Retrieval.</strong> Section-aware chunks of 12 DailyMed labels (1,595 chunks, character offsets kept), bge-small int8 on plain ONNX Runtime, BM25 with a tokenizer that keeps "14.9" whole, reciprocal-rank fusion and figure pinning. Routing makes an indication claim always see the Indications section, and a safety claim the boxed warning and contraindications.</li>
             <li><strong>Judge.</strong> gpt-oss-120b on Groq first, falling back across gpt-oss-20b, Qwen3.8 and Gemma 4 by per-minute budget. It returns strict JSON with a verdict, violation types in FDA's own wording, and verbatim quotes.</li>
-            <li><strong>Guards in plain code.</strong> A quote counts only if it is found in the excerpt it cites, and never by fuzzy match when it holds a figure. A traced verdict must contain every figure the claim states. A verdict that contradicts itself goes to a human.</li>
+            <li><strong>Guards in plain code.</strong> A quote counts only if it is found in the label text the judge was shown, and never by fuzzy match when it holds a figure. A traced verdict must contain every figure the claim states, and the claim must carry the conditions of the indication it quotes ("in adults with type 2 diabetes and chronic kidney disease"). A verdict that contradicts itself goes to a human.</li>
             <li><strong>Injection check on the copy.</strong> Zero-width characters, HTML comments, invisible text and base64 are exposed first. Then patterns written for MLR copy and Llama Prompt Guard 2 look for instructions aimed at the reviewer.</li>
             <li><strong>A React workspace.</strong> Claims highlighted in the copy, label evidence with the quoted sentence marked, the boxed warning drawn as the label's black box, tables with the quoted row, a plain-language list of what the guards caught, the model trace, on-label rewrites re-checked by the same pipeline, keyboard review and a JSON audit export.</li>
           </ol>
@@ -108,18 +108,19 @@
             <tbody>
               <tr><td>Benchmark</td><td class="num">132 claims · 63 fact cards · 12 labels</td></tr>
               <tr><td>Test split (six ingredients not looked at while building)</td><td class="num">70 claims</td></tr>
-              <tr class="hl"><td>gpt-oss-120b, test split: violative claims traced</td><td class="num">2 of 42</td></tr>
+              <tr class="hl"><td>gpt-oss-120b, test split: violative traced, guards off → on</td><td class="num">2 → 0 of 42</td></tr>
               <tr><td>gpt-oss-120b, test split: faithful claims traced</td><td class="num">25 of 28</td></tr>
-              <tr><td>Llama 3.1 8B, all claims: violative traced, guards off → on</td><td class="num">9 → 3 of 78</td></tr>
+              <tr><td>Llama 3.1 8B, all claims: violative traced, guards off → on</td><td class="num">9 → 1 of 78</td></tr>
               <tr><td>Gemma 4 26B, all claims: violative traced, guards off → on</td><td class="num">2 → 0 of 78</td></tr>
               <tr><td>Governing label text in front of the judge</td><td class="num">98% (92% with fixed 180-word chunks)</td></tr>
+              <tr><td>Real quotes the guards rejected, before → after fixing the matcher</td><td class="num">89 → 35 of 567</td></tr>
               <tr><td>Injection attacks that got a violative claim traced</td><td class="num">0 of 18</td></tr>
               <tr><td>False alarms on benign copy lines</td><td class="num">0 of 18</td></tr>
               <tr><td>Llama Prompt Guard 2 on its own</td><td class="num">3 of 18 caught</td></tr>
-              <tr><td>Tests in CI</td><td class="num">94 Python · 9 front-end</td></tr>
+              <tr><td>Tests in CI</td><td class="num">109 Python · 11 front-end</td></tr>
             </tbody>
           </table></div>
-          <p>The 3 faithful claims the strongest model did not trace went to a reviewer because a quote did not match the label table word for word. Full results, intervals and every failure are in <a href="https://github.com/Maaadhavq/onlabel/blob/main/EVALS.md">EVALS.md</a>.</p>
+          <p>The 3 faithful claims the strongest model did not trace went to a reviewer: two quotes did not match a label table word for word, and one left the study length out of its quotes. Two guard rules were written after seeing failures that include the test split, so the 2 → 0 is not a blind result; a holdout of claims FDA cited in its letters is the blind test still to run. Full results, intervals and every failure are in <a href="https://github.com/Maaadhavq/onlabel/blob/main/EVALS.md">EVALS.md</a>.</p>
           <figure class="case-fig"><span class="frame"><img src="/assets/img/onlabel-evals-1280.webp" srcset="/assets/img/onlabel-evals-640.webp 640w, /assets/img/onlabel-evals-1280.webp 1280w" sizes="(min-width: 50rem) 44rem, 100vw" width="1280" height="3134" loading="lazy" decoding="async" alt="OnLabel's How it was tested page, with benchmark, retrieval and red-team results"></span><figcaption>The live site's &ldquo;How it was tested&rdquo; page.</figcaption></figure>
         </div>
       </section>
@@ -127,7 +128,7 @@
         <h2 id="onlabel-5">Trade-offs I made</h2>
         <div class="prose">
           <ul class="tradeoffs">
-            <li><b>Plain code decides what is reported.</b>A traced verdict needs its quotes found in the label and every figure the claim states inside those quotes. On the test split this held back 3 faithful claims from the strongest model; for the small local model it cut false approvals from 9 to 3.</li>
+            <li><b>Plain code decides what is reported.</b>A traced verdict needs its quotes found in the label, every figure the claim states inside those quotes, and every condition its quoted indication attaches. On the test split this held back 3 faithful claims from the strongest model and took its false approvals from 2 to 0; for the small local model it cut them from 9 to 1.</li>
             <li><b>The judge is a large hosted model.</b>A fine-tuned small verifier would cost less per claim. I shipped the hosted judge first and measured it, and the small verifier is the next step.</li>
             <li><b>Patterns written for MLR copy run next to Llama Prompt Guard 2.</b>Prompt Guard caught 3 of 18 attacks on its own and missed every one phrased as an MLR sign-off or a verdict request. The patterns caught 15, with no false alarm on 18 benign copy lines.</li>
             <li><b>Copy that instructs the reviewer gets no traced claim at all.</b>A false alarm costs a reviewer a look at every claim in that piece.</li>
